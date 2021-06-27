@@ -16,6 +16,7 @@ namespace PlaywriteOT.Utilities
         {
 
         }
+
         public static AuthHold instance = null;
         public static AuthHold Instance  //singleton 
         {
@@ -28,11 +29,12 @@ namespace PlaywriteOT.Utilities
                 return instance;
             }
         }
-
         public FirebaseService fireServ = new FirebaseService();
+
 
         public User dbUser { get; set; }
         public UserVM currentUser { get; set; }
+
 
         public async Task<bool> LoginUser(string email, string passw)
         {
@@ -45,13 +47,14 @@ namespace PlaywriteOT.Utilities
             using var hmac = new HMACSHA512(dbUser.USalt);                                              //feeds user salt to HMAC
             byte[] enteredPass = hmac.ComputeHash(Encoding.UTF8.GetBytes(passw));                       //computes hash of inputted password
 
+
             try
             {
-                for (int i = 0; i < dbUser.UPassword.Length; i++)                                           //checks entered byte array against stored
+                for (int i = 0; i < dbUser.UPassword.Length; i++)                                       //checks entered byte array against stored
                 {
                     if (enteredPass[i] != dbUser.UPassword[i])
                     {
-                        return false; //if incorrect password
+                        return false;                                                                   //if incorrect password
                     }
                 }
 
@@ -98,6 +101,18 @@ namespace PlaywriteOT.Utilities
                 return false;
 
             }
+        }
+        public async Task<bool> SubscribeToNews(string email) 
+        {
+            return await fireServ.AddSubscription(email);
+        }
+        public async Task<bool> UnsubscribeToNews(string email)
+        {
+            return await fireServ.RemoveSubscription(email);
+        }
+        public async Task<bool> UpdateUserDetails(UserVM updatedUser)
+        {
+            return await fireServ.UpdateUser(updatedUser);
         }
     }
 }

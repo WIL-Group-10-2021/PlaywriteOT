@@ -12,7 +12,7 @@ namespace PlaywriteOT.Models
             
         }
                                         
-        //public int UId { get; set; }
+        public int UId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

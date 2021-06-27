@@ -29,7 +29,7 @@ namespace PlaywriteOT.Services
 
         public async Task<bool> CreateUser(User newDBUser)
         {
-            var dbUser = await _firebaseClient.Child("Users").OrderBy("email").EqualTo(newDBUser.Email).EqualTo(newDBUser.Email).OnceSingleAsync<User>();    //finds user  
+            var dbUser = await _firebaseClient.Child("Users").OrderBy("email").EqualTo(newDBUser.Email).OnceSingleAsync<User>();    //finds user  
             
             if (dbUser != null) //checks for duplicate emails
             {
@@ -45,23 +45,37 @@ namespace PlaywriteOT.Services
             return false;
         }
 
-        public async Task<FirebaseObject<User>> UpdateUser(UserVM newUser, string passw)
+        public async Task<bool> RemoveSubscription(string email) //deleted email from mailing list
+        {
+            try
+            {
+                await _firebaseClient.Child("Newsletter").OrderBy("email").EqualTo(email).DeleteAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }       
+        }
+
+        public async Task<bool> AddSubscription(string email) //adds email to mailing list
+        {
+            var fo = await _firebaseClient.Child("Newsletter").PostAsync(email);  //posts new email
+            if (fo.Key != null) //if posted successfully
+            {
+                return true;
+            }
+            return false;
+           
+        }
+
+        public async Task<bool> UpdateUser(User updateUser, string passw)
         {
             //find current user
             //get current user
+            //
 
-
-            User newDBUser = new User
-            {
-                FirstName = newUser.FName,
-                LastName = newUser.LName,
-                Email = newUser.Email,
-                UPassword = bytesPass,
-                USalt = bytesSalt,
-                URole = newUser.URole
-            };
-
-            FirebaseObject<User> fo = await _firebaseClient.Child("Users/").PostAsync(newDBUser);
+            await _firebaseClient.Child("Users").PutAsync(updateUser);
             return fo;
         }
     }
