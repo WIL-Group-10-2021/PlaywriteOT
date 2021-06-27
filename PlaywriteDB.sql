@@ -12,7 +12,6 @@ uSalt varbinary(MAX)  NOT NULL,
 uRole BIT  NOT NULL
 );
 
-
 --Caretaker newsletter subscriptions (mailing list)
 CREATE TABLE subscriptions(
 subID INT PRIMARY KEY NOT NULL IDENTITY(1,1),
