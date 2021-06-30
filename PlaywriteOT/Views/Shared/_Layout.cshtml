@@ -14,7 +14,6 @@
     <script src="~/js/jquery-1.9.1.min.js"></script>
     <script src="~/js/jquery-3.3.1.min.js"></script>
     <script src="~/js/owl.carousel.js"></script>
-    <script src="~/js/theme-change.js"></script>
     <script src="~/js/site.js"></script>
 
     <!-- Sender.net subscribe form -->
@@ -40,9 +39,9 @@
     <header id="site-header" class="fixed-top">
         <section class="w3l-header-4">
             <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light">
+                <nav class="navbar navbar-expand-lg navbar-dark">
                     <h1>
-                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        <a class="navbar-brand " asp-area="" asp-controller="Home" asp-action="Index">
                             PlaywriteOT
                         </a>
                     </h1>
@@ -77,24 +76,6 @@
                                 </a>
                             </li>
                         </ul>
-
-                        <!-- LOGIN here -->
-                        <ul>
-                            <li class="nav-item">
-                                <a asp-area="" asp-controller="User" asp-action="Login"
-                                   class="btn btn-primary d-none d-lg-block btn-style mr-3">Login</a>
-                            </li>
-                        </ul>
-
-                        <!-- REGISTRER here -->
-                        <ul>
-                            <li class="nav-item">
-                                <a asp-area="" asp-controller="User" asp-action="Register"
-                                   class="btn btn-primary d-none d-lg-block btn-style mr-3">Register</a>
-                            </li>
-                        </ul>
-
-                        <!-- //toggle switch for light and dark theme -->
                         <!-- search popup -->
                         <div id="search" class="pop-overlay">
                             <div class="popup">
@@ -105,30 +86,14 @@
                                 </form>
                             </div>
                         </div>
-                        <!-- /search popup -->
-                    </div>
-
-                    <!-- toggle switch for light and dark theme -->
-                    <div class="mobile-position">
-                        <nav class="navigation">
-                            <div class="theme-switch-wrapper">
-                                <label class="theme-switch" for="checkbox">
-                                    <input type="checkbox" id="checkbox">
-                                    <div class="mode-container">
-                                        <i class="gg-sun"></i>
-                                        <i class="gg-moon"></i>
-                                    </div>
-                                </label>
-                            </div>
-                        </nav>
-                    </div>
+                    </div>               
                 </nav>
             </div>
         </section>
     </header>
     <!-- ---- /header ---- -->
 
-    <div class="container">
+    <div style="min-height:60vh" class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -161,20 +126,24 @@
                     <div class="col-lg-2 col-md-6 col-sm-5 col-6 footer-list-29 footer-2 mt-sm-0 mt-5">
                         <h6 class="footer-title-29">Navigation</h6>
                         <ul>
-                            <li><a asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="Services">Services</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact us</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Terms & Privacy</a></li>
+                            <li><a  asp-controller="Home" asp-action="About">About Us</a></li>
+                            <li><a  asp-controller="Home" asp-action="Services">Services</a></li>
+                            <li><a  asp-controller="Home" asp-action="Contact">Contact us</a></li>
+                            <li><a  asp-controller="Home" asp-action="Privacy">Terms & Privacy</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-2 col-md-6 col-sm-5 col-6 footer-list-29 footer-3 mt-lg-0 mt-5">
                         <h6 class="footer-title-29">Resources</h6>
                         <ul>
-                            <li><a href="#traning">Marketing Plans</a></li>
+                            <li><a href="#traning">Products</a></li>
                             <li><a href="#marketplace">Digital Services</a></li>
-                            <li><a href="#experts">Interior Design</a></li>
-                            <li><a href="#platform">Product Selling</a></li>
-                            <li><a href="#marketplace">Digital Services</a></li>
+                            <li><a href="#experts">Assistance</a></li>
+                            <li><a href="#platform">Milestones</a></li>
+                            <li><a href="#marketplace">OT Services</a></li>
+                            <li><a asp-controller="User" asp-action="Login">Login</a></li>
+                            
+
+
                         </ul>
 
                     </div>
