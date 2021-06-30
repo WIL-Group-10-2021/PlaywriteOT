@@ -12,7 +12,7 @@ namespace PlaywriteOT.Services
 {
     public class FirebaseService
     {
-        public string DBString = "https://bookingsdb-cebee-default-rtdb.europe-west1.firebasedatabase.app/";
+        public string DBString = "https://playwriteot-9e0fb-default-rtdb.europe-west1.firebasedatabase.app/";
         public readonly FirebaseClient _firebaseClient;
 
         public FirebaseService()
@@ -23,26 +23,53 @@ namespace PlaywriteOT.Services
 
         public async Task<User> FindUser(string email, string passw)
         {
-            var dbUser = await _firebaseClient.Child("Users").OrderBy("email").EqualTo(email).EqualTo(passw).OnceSingleAsync<User>();    //finds user         
-            return dbUser;
+            try
+            {
+                var dbUser = (await _firebaseClient.Child("Users")
+                    .OnceAsync<User>())
+                    .Where(u => u.Object.Email == email)
+                    .Select(x => new User
+                    {
+                        FirstName = x.Object.FirstName,
+                        LastName = x.Object.LastName,
+                        Email = x.Object.Email,
+                        Admin = x.Object.Admin,
+                        UPassword = x.Object.UPassword,
+                        USalt = x.Object.USalt,
+
+                    }).FirstOrDefault();    //finds user and converts to DBUser        
+                return dbUser;
+            }
+            catch (Exception)
+            {
+
+                return new User();
+            }
+
         }
 
         public async Task<bool> CreateUser(User newDBUser)
         {
-            var dbUser = await _firebaseClient.Child("Users").OrderBy("email").EqualTo(newDBUser.Email).OnceSingleAsync<User>();    //finds user  
-            
-            if (dbUser != null) //checks for duplicate emails
+            try
             {
-                return false;   //if user already exists 
-            }
+                var dbUser = (await _firebaseClient.Child("Users").OnceAsync<User>()).Where(u => u.Object.Email == newDBUser.Email).FirstOrDefault();    //finds user  
 
+                if (dbUser.Object.Email != null) //checks for duplicate emails
+                {
+                    return false;   //if user already exists 
+                }
 
-            FirebaseObject<User> fo =  await _firebaseClient.Child("Users").PostAsync(newDBUser);  //posts new User
-            if (fo.Key != null) //if posted successfully
-            {
+                await _firebaseClient.Child("Users").PostAsync(newDBUser);  //posts new User
                 return true;
             }
-            return false;
+            catch (Exception e)
+            {
+                string mes = e.Message;
+                string mes1 = mes;
+
+                throw;
+            }
+
         }
 
         public async Task<bool> RemoveSubscription(string email) //deleted email from mailing list
@@ -55,7 +82,7 @@ namespace PlaywriteOT.Services
             catch (Exception)
             {
                 return false;
-            }       
+            }
         }
 
         public async Task<bool> AddSubscription(string email) //adds email to mailing list
@@ -66,17 +93,27 @@ namespace PlaywriteOT.Services
                 return true;
             }
             return false;
-           
+
         }
 
-        public async Task<bool> UpdateUser(User updateUser, string passw)
+        public async Task<bool> UpdateUser(User updateUser)
         {
             //find current user
             //get current user
             //
+            try
+            {
+                await _firebaseClient.Child("Users").OrderBy("email").EqualTo(updateUser.Email).PutAsync(updateUser);
+                return true;
+            }
+            catch (Exception)
+            {
 
-            await _firebaseClient.Child("Users").PutAsync(updateUser);
-            return fo;
+                return false;
+            }
+
+
+
         }
     }
 }

@@ -1,48 +1,238 @@
 ﻿<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - PlaywriteOT</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+
+    <link href="~/css/style-starter.css" rel="stylesheet" />
+    <link href="~/css/style-login-register.css" rel="stylesheet" />
+
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/easyResponsiveTabs.js"></script>
+    <script src="~/js/jquery-1.9.1.min.js"></script>
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/owl.carousel.js"></script>
+    <script src="~/js/theme-change.js"></script>
+    <script src="~/js/site.js"></script>
+
+    <!-- Sender.net subscribe form -->
+    <script>
+        (function (s, e, n, d, er) {
+            s['Sender'] = er;
+            s[er] = s[er] || function () {
+                (s[er].q = s[er].q || []).push(arguments)
+            }, s[er].l = 1 * new Date();
+            var a = e.createElement(n),
+                m = e.getElementsByTagName(n)[0];
+            a.async = 1;
+            a.src = d;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
+        sender('2815578a7f7043')
+    </script>
+
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <!-- ---- header ---- -->
+    <header id="site-header" class="fixed-top">
+        <section class="w3l-header-4">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PlaywriteOT</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <h1>
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                            PlaywriteOT
+                        </a>
+                    </h1>
+                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="fa icon-expand fa-bars"></span>
+                        <span class="fa icon-close fa-times"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Services">Our Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                            </li>
+                            @* OR <!-- <li>@Html.ActionLink("Our Services", "Services", "Home", new { @class = "nav-link" })</li>--> *@
+                        </ul>
+
+                        <!-- search -->
+                        <ul class="navbar-nav search-right mt-lg-0 mt-2">
+                            <li class="nav-item mr-2" title="Search">
+                                <a href="#search" class="btn search-search">
+                                    <span class="fa fa-search" aria-hidden="true"></span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- LOGIN here -->
+                        <ul>
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="User" asp-action="Login"
+                                   class="btn btn-primary d-none d-lg-block btn-style mr-3">Login</a>
+                            </li>
+                        </ul>
+
+                        <!-- REGISTRER here -->
+                        <ul>
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="User" asp-action="Register"
+                                   class="btn btn-primary d-none d-lg-block btn-style mr-3">Register</a>
+                            </li>
+                        </ul>
+
+                        <!-- //toggle switch for light and dark theme -->
+                        <!-- search popup -->
+                        <div id="search" class="pop-overlay">
+                            <div class="popup">
+                                <form action="error.html" method="GET" class="d-flex">
+                                    <input type="search" placeholder="Search.." name="search" required="required" autofocus>
+                                    <button type="submit"><span class="fa fa-search"></span></button>
+                                    <a class="close" href="#close">&times;</a>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /search popup -->
+                    </div>
+
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                </nav>
             </div>
-        </nav>
+        </section>
     </header>
+    <!-- ---- /header ---- -->
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - PlaywriteOT - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <!-- footer -->
+    <section class="w3l-footer-29-main">
+        <div class="footer-29 py-5">
+            <div class="container py-lg-4">
+                <div class="row footer-top-29">
+                    <div class="col-lg-4 col-md-6 col-sm-7 footer-list-29 footer-1 pr-lg-5">
+                        <div class="footer-logo mb-4">
+                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                                PlaywriteOT
+                            </a>
+                        </div>
+                        <p>
+                            Short Description of what the website is about.
+                        </p>
+                        <div class="main-social-footer-29 mt-4">
+                            <a href="https://www.facebook.com/playwriteOT/" target="_blank" class="facebook"><span class="fa fa-facebook"></span></a>
+
+                            <!-- // other social media pages (if available)
+                                <a href="#twitter"><span class="fa fa-twitter-square" aria-hidden="true"></span></a>
+                                <a href="#instagram"><span class="fa fa-instagram" aria-hidden="true"></span></a>
+                                <a href="#linkedin"><span class="fa fa-linkedin-square" aria-hidden="true"></span></a>
+                            -->
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-5 col-6 footer-list-29 footer-2 mt-sm-0 mt-5">
+                        <h6 class="footer-title-29">Navigation</h6>
+                        <ul>
+                            <li><a asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Services">Services</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact us</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Terms & Privacy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-5 col-6 footer-list-29 footer-3 mt-lg-0 mt-5">
+                        <h6 class="footer-title-29">Resources</h6>
+                        <ul>
+                            <li><a href="#traning">Marketing Plans</a></li>
+                            <li><a href="#marketplace">Digital Services</a></li>
+                            <li><a href="#experts">Interior Design</a></li>
+                            <li><a href="#platform">Product Selling</a></li>
+                            <li><a href="#marketplace">Digital Services</a></li>
+                        </ul>
+
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-7 footer-list-29 footer-4 mt-lg-0 mt-5">
+                        <h6 class="footer-title-29">Contact Info </h6>
+                        <p>Address:</p>
+                        <p>
+                            <a asp-area="" asp-controller="Home" asp-action="Contact">
+                                Office 2, 55 Old Main Road, Gillitts
+                                <br />Durban, 3610
+                                <br />South Africa
+                            </a>
+                        </p>
+                        <p class="mt-2">Phone : <a href="tel: +27 (72) 342 8252">+27 (72) 342 8252</a></p>
+                        <p class="mt-2">Email : <a href="mailto:info@example.com">info@example.com</a></p>
+                        <p class="mt-2">Support : <a href="mailto:info@support.com">info@support.com</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+        <!-- copyright -->
+        <section class="w3l-copyright text-center">
+            <div class="container">
+                <p class="copy-footer-29">
+                    © 2021 PlaywriteOT. All rights reserved. Design by WIL 2021 Group 10
+                </p>
+            </div>
+
+            <!-- move top -->
+            <button onclick="topFunction()" id="movetop" title="Go to top">
+                &#10548;
+            </button>
+            <script>
+                // When the user scrolls down 20px from the top of the document, show the button
+                window.onscroll = function () {
+                    scrollFunction()
+                };
+
+                function scrollFunction() {
+                    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                        document.getElementById("movetop").style.display = "block";
+                    } else {
+                        document.getElementById("movetop").style.display = "none";
+                    }
+                }
+
+                // When the user clicks on the button, scroll to the top of the document
+                function topFunction() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
+            </script>
+            <!-- /move top -->
+        </section>
+        <!-- //copyright -->
+
+    </section>
+    <!-- //footer -->
+
 </body>
 </html>

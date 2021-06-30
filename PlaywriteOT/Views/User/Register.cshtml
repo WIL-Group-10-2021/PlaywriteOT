@@ -1,0 +1,52 @@
+﻿@{ ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<!-- Register -->
+<div class="text-center py-4">
+    <h3 class="title-big">Register</h3>
+    <p>Enter your details below to register</p>
+</div>
+<div id="register" class="d-flex justify-content-center ">
+    <form class="form-group" asp-action="Register">
+
+        <div class="form-group">
+            <label for="fname"><b>First Name</b></label>
+            <input class="rounded" type="text" placeholder="Enter First Name" name="firstName" required>
+        </div>
+        <div class="form-group">
+            <label for="lname"><b>Last Name</b></label>
+            <input class="rounded" type="text" placeholder="Enter Last Name" name="lastName" required>
+        </div>
+        <div class="form-group">
+            <label for="emailAddress"><b>Email Address</b></label>
+            <input class="rounded" type="text" placeholder="Enter Email address" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="psw"><b>Password</b></label>
+            <input class="rounded" type="password" placeholder="Password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="pswConfirm"><b>Confirm Password</b></label>
+            <input class="rounded" type="password" placeholder="Confirm Password" name="confirmPassword" required>
+        </div>
+
+        <div class="form-group text-center justify-content-center">
+            <p>
+                By creating an account you agree to our
+                <a asp-area="" asp-controller="Home" asp-action="Privacy">Terms & Privacy</a>.
+            </p>
+        </div>
+
+        <div class="form-group text-center justify-content-center">
+            <div class="p-1 text-danger">@ViewBag.error</div>
+            <input type="submit" value="Register" class="btn rounded btn-outline-primary btn-lg rounded col w-25" />
+        </div>
+
+        <div class="form-group text-center justify-content-center">
+            <span class="">
+                Already have an account?
+                <a asp-area="" asp-controller="User" asp-action="Login">Login Here.</a>
+            </span>
+        </div>
+    </form>
+</div>

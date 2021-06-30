@@ -39,7 +39,7 @@ namespace PlaywriteOT.Utilities
         public async Task<bool> LoginUser(string email, string passw)
         {
             dbUser = await fireServ.FindUser(email, passw);             //find user from firebase
-            if ( dbUser == null)                                        //if user doesnt exists
+            if ( dbUser.Email == null)                                        //if user doesnt exists
             {
                 return false;  //if no user
             }
@@ -48,7 +48,7 @@ namespace PlaywriteOT.Utilities
             byte[] enteredPass = hmac.ComputeHash(Encoding.UTF8.GetBytes(passw));                       //computes hash of inputted password
 
 
-            try
+            try                                                                                         //incase there is a length mismatch in password comparisson
             {
                 for (int i = 0; i < dbUser.UPassword.Length; i++)                                       //checks entered byte array against stored
                 {
@@ -90,7 +90,7 @@ namespace PlaywriteOT.Utilities
                     Email = newUser.Email,
                     UPassword = bytesPass,
                     USalt = bytesSalt,
-                    Admin = false
+                    Admin = true
                 };
 
                 return await fireServ.CreateUser(newDBUser); //returns true if successfull         
@@ -110,9 +110,9 @@ namespace PlaywriteOT.Utilities
         {
             return await fireServ.RemoveSubscription(email);
         }
-        public async Task<bool> UpdateUserDetails(UserVM updatedUser)
+/*        public async Task<bool> UpdateUserDetails(UserVM updatedUser)
         {
             return await fireServ.UpdateUser(updatedUser);
-        }
+        }*/
     }
 }

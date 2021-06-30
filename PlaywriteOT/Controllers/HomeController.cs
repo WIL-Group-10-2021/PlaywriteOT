@@ -22,8 +22,28 @@ namespace PlaywriteOT.Controllers
         {
             return View();
         }
+        public IActionResult AdminHome()
+        {
+            return View();
+        }
+
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult Services()
         {
             return View();
         }

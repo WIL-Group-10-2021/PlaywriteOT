@@ -7,5 +7,6 @@ namespace PlaywriteOT.Services
 {
     public class NewsletterService
     {
+
     }
 }
