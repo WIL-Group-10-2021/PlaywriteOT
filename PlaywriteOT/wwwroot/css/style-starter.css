@@ -7,34 +7,35 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 :root {
-  --blue: #007bff;
-  --indigo: #6610f2;
-  --purple: #6f42c1;
-  --pink: #e83e8c;
-  --red: #dc3545;
-  --orange: #fd7e14;
-  --yellow: #ffc107;
-  --green: #28a745;
-  --teal: #20c997;
-  --cyan: #17a2b8;
-  --white: #fff;
-  --gray: #6c757d;
-  --gray-dark: #343a40;
-  --primary: #f3525a;
-  --secondary: #6c757d;
-  --success: #28a745;
-  --info: #17a2b8;
-  --warning: #ffc107;
-  --danger: #dc3545;
-  --light: #f8f9fa;
-  --dark: #343a40;
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #09aeed;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
 
 *,
 *::before,
@@ -1822,9 +1823,10 @@ fieldset:disabled a.btn {
   pointer-events: none; }
 
 .btn-primary {
-  color: #fff;
-  background-color: #f3525a;
-  border-color: #f3525a; }
+    color: #fff;
+    background-color: #09aeed;
+    border-color: #09aeed;
+}
   .btn-primary:hover {
     color: #fff;
     background-color: #f12e38;
@@ -9552,40 +9554,24 @@ a.text-dark:hover, a.text-dark:focus {
   clip: auto; }
 
 :root {
-  --primary-color: #f3525a;
-  --primary-dark: #172541;
-  --secondary-color: #1545CB;
-  --layer: rgba(0, 0, 0, 0.5);
-  --font-color: #666;
-  --bg-color: #fff;
-  --heading-color: #3f3a64;
-  --border-radius: 5px;
-  --border-radius-full: 35px;
-  --border-color: transparent;
-  --border-color-light: #eee;
-  --nav-color: #292922;
-  --dropdown-color: #fff;
-  --iframe-filter: grayscale(0%);
-  --bg-grey: #f7f7f7;
-  --bg-lightgrey: #f8f9fa;
-  --layer: rgba(0, 0, 0, 0.45); }
-
-[data-theme="dark"] {
-  --primary-color: #f3525a;
-  --primary-dark: #172541;
-  --secondary-color: #1545CB;
-  --layer: rgba(0, 0, 0, 0.65);
-  --font-color: #c2c2c2;
-  --bg-color: #182C44;
-  --heading-color: #fff;
-  --border-color: rgba(255, 255, 255, 0.2);
-  --border-color-light: rgba(255, 255, 255, 0.1);
-  --nav-color: #fff;
-  --dropdown-color: #121725;
-  --iframe-filter: grayscale(100%);
-  --bg-grey: #112339;
-  --bg-lightgrey: #112339;
-  --layer: rgba(0, 0, 0, 0.65); }
+    --primary-color: #09aeed;
+    --primary-dark: #172541;
+    --secondary-color: #1545CB;
+    --layer: rgba(0, 0, 0, 0.5);
+    --font-color: #221f20;
+    --bg-color: #fff;
+    --heading-color: #3f3a64;
+    --border-radius: 5px;
+    --border-radius-full: 35px;
+    --border-color: transparent;
+    --border-color-light: #eee;
+    --nav-color: #292922;
+    --dropdown-color: #fff;
+    --iframe-filter: grayscale(0%);
+    --bg-grey: #f7f7f7;
+    --bg-lightgrey: #f8f9fa;
+    --layer: rgba(0, 0, 0, 0.45);
+}
 
 .noscroll {
   overflow: hidden;
@@ -9633,9 +9619,7 @@ span {
   outline: none;
   font-family: 'Prompt', sans-serif; }
 
-a,
-a:hover {
-  text-decoration: none;
+a{
   font-family: 'Prompt', sans-serif; }
 
 iframe {
@@ -9891,15 +9875,16 @@ header.fixed-top {
   position: sticky !important; }
 
 header {
-  padding: 0px;
-  transition: all 0.4s ease 0s;
-  height: 95px;
-  padding: 20px 0;
-  display: grid;
-  align-items: center;
-  background: var(--bg-color);
-  z-index: 10 !important;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05); }
+    padding: 0px;
+    transition: all 0.4s ease 0s;
+    height: 95px;
+    padding: 20px 0;
+    display: grid;
+    align-items: center;
+    background-color: #09aeed;
+    z-index: 10 !important;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
+}
 
 header.nav-fixed {
   padding: 0px;
@@ -9910,15 +9895,16 @@ header.nav-fixed {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05); }
 
 .w3l-header-4 .navbar .navbar-brand {
-  margin-right: 0px;
-  padding: 0px;
-  color: var(--heading-color);
-  font-size: 30px;
-  line-height: 57px;
-  padding: 0;
-  margin-right: 3rem;
-  font-weight: 600;
-  position: relative; }
+    margin-right: 0px;
+    padding: 0px;
+    color: #221f20;
+    font-size: 30px;
+    line-height: 57px;
+    padding: 0;
+    margin-right: 3rem;
+    font-weight: 600;
+    position: relative;
+}
 
 .w3l-header-4 .navbar .navbar-brand span {
   font-weight: 400; }
@@ -9932,13 +9918,14 @@ header.nav-fixed {
   padding-right: 0; }
 
 .w3l-header-4 .navbar-expand-lg .navbar-nav .nav-link {
-  padding: 0px 10px;
-  color: var(--font-color);
-  background: transparent;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 28px;
-  text-transform: capitalize; }
+    padding: 0px 10px;
+    color: #221f20;
+    background: transparent;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+    text-transform: capitalize;
+}
 
 .w3l-header-4 .navbar-expand-lg .navbar-nav li.active .nav-link {
   color: var(--primary-color); }

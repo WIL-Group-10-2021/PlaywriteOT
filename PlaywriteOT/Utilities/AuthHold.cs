@@ -35,11 +35,17 @@ namespace PlaywriteOT.Utilities
         public User dbUser { get; set; }
         public UserVM currentUser { get; set; }
 
-
+        /// <summary>
+        /// Searches firebase for specified email through FirebaseService, and validates specified password if user was found. 
+        /// If user found, local UserVm object is populated.
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="passw"></param>
+        /// <returns> A <strong>boolean</strong> depending on successful and validated login </returns>
         public async Task<bool> LoginUser(string email, string passw)
         {
-            dbUser = await fireServ.FindUser(email, passw);             //find user from firebase
-            if ( dbUser.Email == null)                                        //if user doesnt exists
+            dbUser = await fireServ.FindUser(email);                            //find user from firebase
+            if ( dbUser.Email == null)                                          //if user doesnt exists
             {
                 return false;  //if no user
             }
@@ -80,8 +86,8 @@ namespace PlaywriteOT.Utilities
             try //creates new user
             {
                 using var hmac = new HMACSHA512();
-                byte[] bytesPass = hmac.ComputeHash(Encoding.UTF8.GetBytes(passw));
-                byte[] bytesSalt = hmac.Key;
+                byte[] bytesPass = hmac.ComputeHash(Encoding.UTF8.GetBytes(passw));  //creates new hash based on user password
+                byte[] bytesSalt = hmac.Key;                                         //gets salt 
 
                 User newDBUser = new User
                 {
@@ -91,9 +97,9 @@ namespace PlaywriteOT.Utilities
                     UPassword = bytesPass,
                     USalt = bytesSalt,
                     Admin = true
-                };
+                };                                                                   //creates firebase user object
 
-                return await fireServ.CreateUser(newDBUser); //returns true if successfull         
+                return await fireServ.CreateUser(newDBUser);                         //returns true if successful      
             }
             catch (Exception e)
             {
