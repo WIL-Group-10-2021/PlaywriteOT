@@ -1,7 +1,4 @@
-﻿/* Bordered form */
-form {
-    width: 600px;
-}
+﻿
 
 /* Full-width inputs */
 input[type=text], input[type=email], input[type=password] {
@@ -21,7 +18,6 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 30%;
 }
 
     /* Add a hover effect for buttons */

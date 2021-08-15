@@ -10,10 +10,10 @@ namespace PlaywriteOT.Controllers
 {
     public class NewsletterController : Controller
     {
-        /*public IActionResult Index()
+        public IActionResult Subscription()
         {
             return View();
-        }*/
+        }
 
         [HttpGet]
         public ActionResult CreateSubscriber()

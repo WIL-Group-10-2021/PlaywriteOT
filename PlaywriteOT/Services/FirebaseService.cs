@@ -12,7 +12,7 @@ namespace PlaywriteOT.Services
 {
     public class FirebaseService
     {
-        public string DBString = "https://playwriteot-9e0fb-default-rtdb.europe-west1.firebasedatabase.app/";  //firebase connection string (potentially move to properties)
+        public string DBString = "https://playwriteot-771a0-default-rtdb.europe-west1.firebasedatabase.app/";  //firebase connection string (potentially move to properties)
         public readonly FirebaseClient _firebaseClient;                                                        //client classes for connection
 
         public FirebaseService()

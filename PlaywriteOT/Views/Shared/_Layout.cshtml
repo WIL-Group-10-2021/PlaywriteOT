@@ -2,6 +2,7 @@
 
 <html lang="en">
 <head>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - PlaywriteOT</title>
@@ -16,21 +17,27 @@
     <script src="~/js/owl.carousel.js"></script>
     <script src="~/js/site.js"></script>
 
-    <!-- Sender.net subscribe form -->
-    <script>
-        (function (s, e, n, d, er) {
-            s['Sender'] = er;
-            s[er] = s[er] || function () {
-                (s[er].q = s[er].q || []).push(arguments)
-            }, s[er].l = 1 * new Date();
-            var a = e.createElement(n),
-                m = e.getElementsByTagName(n)[0];
-            a.async = 1;
-            a.src = d;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
-        sender('2815578a7f7043')
-    </script>
+    <style>
+        #sib-container input:-ms-input-placeholder {
+            text-align: left;
+            font-family: "Trebuchet MS", sans-serif;
+            color: #c0ccda;
+        }
+
+        #sib-container input::placeholder {
+            text-align: left;
+            font-family: "Trebuchet MS", sans-serif;
+            color: #c0ccda;
+        }
+
+        #sib-container textarea::placeholder {
+            text-align: left;
+            font-family: "Trebuchet MS", sans-serif;
+            color: #c0ccda;
+        }
+    </style>
+    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+
 
 </head>
 
@@ -42,7 +49,7 @@
                 <nav class="navbar navbar-expand-lg">
                     <h1>
                         <a class=" navbar-brand " asp-area="" asp-controller="Home" asp-action="Index">
-                             PlaywriteOT 
+                            PlaywriteOT
                         </a>
                     </h1>
                     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -86,7 +93,7 @@
                                 </form>
                             </div>
                         </div>-->
-                    </div>               
+                    </div>
                 </nav>
             </div>
         </section>
@@ -126,10 +133,10 @@
                     <div class="col-lg-2 col-md-6 col-sm-5 col-6 footer-list-29 footer-2 mt-sm-0 mt-5">
                         <h6 class="footer-title-29">Navigation</h6>
                         <ul>
-                            <li><a  asp-controller="Home" asp-action="About">About Us</a></li>
-                            <li><a  asp-controller="Home" asp-action="Services">Services</a></li>
-                            <li><a  asp-controller="Home" asp-action="Contact">Contact us</a></li>
-                            <li><a  asp-controller="Home" asp-action="Privacy">Terms & Privacy</a></li>
+                            <li><a asp-controller="Home" asp-action="About">About Us</a></li>
+                            <li><a asp-controller="Home" asp-action="Services">Services</a></li>
+                            <li><a asp-controller="Home" asp-action="Contact">Contact us</a></li>
+                            <li><a asp-controller="Home" asp-action="Privacy">Terms & Privacy</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-2 col-md-6 col-sm-5 col-6 footer-list-29 footer-3 mt-lg-0 mt-5">
@@ -141,7 +148,7 @@
                             <li><a href="#platform">Milestones</a></li>
                             <li><a href="#marketplace">OT Services</a></li>
                             <li><a asp-controller="User" asp-action="Login">Login</a></li>
-                            
+
 
 
                         </ul>
@@ -205,3 +212,30 @@
 
 </body>
 </html>
+
+<!-- START - SendInBlue Scripts  -->
+<script>
+    window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+    window.LOCALE = 'en';
+    window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+
+    window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
+
+    window.GENERIC_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+
+
+
+
+    window.translation = {
+        common: {
+            selectedList: '{quantity} list selected',
+            selectedLists: '{quantity} lists selected'
+        }
+    };
+
+    var AUTOHIDE = Boolean(0);
+</script>
+<script src="https://sibforms.com/forms/end-form/build/main.js"></script>
+
+
+<!-- END - SendInBlue Scripts  -->
