@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PlaywriteOT.Models;
+using PlaywriteOT.Services;
 using PlaywriteOT.Utilities;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,20 @@ namespace PlaywriteOT.Controllers
     {
         public IActionResult Subscription()
         {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult NewsletterDashboard()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SendN()
+        {
+            NewsletterService ns = new NewsletterService();
+            ns.createNewCampaign();
             return View();
         }
 
