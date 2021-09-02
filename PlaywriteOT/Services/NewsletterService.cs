@@ -25,6 +25,12 @@ namespace PlaywriteOT.Services
 
         public bool CreateNewCampaign(string headingText, string bodyText, string attachmentUrl)
         {
+
+           // headingText = "Test for Attachments";
+           // bodyText = "Test body where is the attc";
+           // attachmentUrl = "https://res.cloudinary.com/playwriteot/image/upload/v1630614158/TestPDF_oxpqwt.pdf";
+
+
             if (string.IsNullOrEmpty(bodyText))
                 throw new ArgumentException("Value cannot be null or empty.", nameof(bodyText));
 
@@ -38,7 +44,7 @@ namespace PlaywriteOT.Services
             {
                 { "SUBJECT", "Newsletter " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.UtcNow.Month) },
                 { "bodytext", bodyText },
-                { "heading", headingText}
+                { "headingText", headingText}
             };
 
             

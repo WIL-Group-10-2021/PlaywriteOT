@@ -23,7 +23,7 @@ namespace PlaywriteOT.Controllers
         public IActionResult Login()
         {
             NewsletterService ns = new NewsletterService();
-            if (ns.CreateNewCampaign())
+            if (ns.CreateNewCampaign("","",""))
             {
                 return View();
             }
