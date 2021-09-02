@@ -23,10 +23,20 @@ namespace PlaywriteOT.Controllers
         }
 
         [HttpPost]
-        public IActionResult SendN()
+        public IActionResult SendN(string headingText, string bodyText)
         {
             NewsletterService ns = new NewsletterService();
-            ns.createNewCampaign();
+            //call cloudinary Upload 
+            //pass through newsletter or get link through upload component
+
+            string pdfLink = "";
+
+            if (ns.CreateNewCampaign(headingText,bodyText,pdfLink))
+            {
+                
+            }
+
+            
             return View();
         }
 
