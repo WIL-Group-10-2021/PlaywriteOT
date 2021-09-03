@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Firebase.Database;
 using Firebase.Database.Query;
 using PlaywriteOT.Models;
+// ReSharper disable All
 
 namespace PlaywriteOT.Services
 {
@@ -15,9 +16,12 @@ namespace PlaywriteOT.Services
         public string DBString = "https://playwriteot-771a0-default-rtdb.europe-west1.firebasedatabase.app/";  //firebase connection string (potentially move to properties)
         public readonly FirebaseClient _firebaseClient;                                                        //client classes for connection
 
+        /// <summary>
+        /// Instantiates Firebaseclient with connection string
+        /// </summary>
         public FirebaseService()
         {
-            _firebaseClient = new FirebaseClient(DBString);                                            //instantiate client with connecttion string
+            _firebaseClient = new FirebaseClient(DBString);                                                    
         }
 
         /// <summary>
@@ -60,7 +64,10 @@ namespace PlaywriteOT.Services
         {
             try
             {
-                var dbUser = (await _firebaseClient.Child("Users").OnceAsync<User>()).Where(u => u.Object.Email == newDBUser.Email).FirstOrDefault();    //finds user  
+                
+                var dbUser = (await _firebaseClient.Child("Users").OnceAsync<User>())
+                                                     .Where(u => u.Object.Email == newDBUser.Email)
+                                                     .FirstOrDefault();    //finds user  
 
                 if (dbUser.Object.Email != null) //checks for duplicate emails
                 {
@@ -98,7 +105,12 @@ namespace PlaywriteOT.Services
             }
         }
 
-        public async Task<bool> AddSubscription(string email) //adds email to mailing list
+        /// <summary>
+        /// Adds user email to Firebase DB
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>A boolean depending on successful post</returns>
+        public async Task<bool> AddSubscription(string email)
         {
             var fo = await _firebaseClient.Child("Newsletter").PostAsync(email);  //posts new email
             if (fo.Key != null) //if posted successfully
@@ -108,6 +120,7 @@ namespace PlaywriteOT.Services
             return false;
 
         }
+
 
         public async Task<bool> UpdateUser(User updateUser)
         {

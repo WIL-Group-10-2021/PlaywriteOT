@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="text-center py-4">
+    <h3 class="title-big">Newsletter Dashboard</h3>
+    <p>Here you can manage and upload newsletters</p>
+</div>
+<div id="newsDash" class="d-flex justify-content-center ">
+    <form class="form-group" asp-action="Login">
+        <label class="pt-2" for="emailAddress"><b>Email Address</b></label>
+        <input type="text" class="rounded" placeholder="example@@email.com" name="email" required>
+        <div class="form-group">
+            <label class="pt-2" name="password"><b>Password</b></label>
+            <input type="password" class="rounded" name="password" required>
+        </div>
+        <div class="form-group text-center justify-content-center">
+            <div class="p-1 text-danger">@ViewBag.error</div>
+            <input type="submit" value="Login" class="btn rounded btn-outline-primary btn-lg rounded col w-50" />
+        </div>
+        <div class="form-group text-center justify-content-center">
+            <span class=""><a href="#">Forgot password?</a></span>
+        </div>
+    </form>
+</div>

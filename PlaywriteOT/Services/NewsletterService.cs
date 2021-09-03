@@ -124,7 +124,7 @@ namespace PlaywriteOT.Services
         }
 
 
-        public bool sendNews()
+        public bool UploadNewsletter()
         {
 
 

@@ -11,19 +11,21 @@ namespace PlaywriteOT.Controllers
 {
     public class NewsletterController : Controller
     {
-        public IActionResult Subscription()
+
+        [HttpGet]
+        public IActionResult Dashboard()
         {
             return View();
         }
 
         [HttpGet]
-        public IActionResult NewsletterDashboard()
+        public IActionResult NewUpload()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult SendN(string headingText, string bodyText)
+        public IActionResult NewUpload(string headingText, string bodyText)
         {
             NewsletterService ns = new NewsletterService();
             //call cloudinary Upload 
@@ -39,6 +41,20 @@ namespace PlaywriteOT.Controllers
             
             return View();
         }
+
+
+        [HttpGet]
+        public IActionResult Subscription()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Unsubscribe()  //SendInBlue has an integrated page
+        {
+            return View();
+        }
+
 
         [HttpGet]
         public ActionResult CreateSubscriber()
