@@ -10,3 +10,48 @@
     <p>Fill in all the details and upload a pdf to send the newsletter email</p>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<button id="upload_widget" class="cloudinary-button">Upload files</button>
+
+
+
+<!--  Cloudinary Widget JavaScript file  -->
+<script src="https://upload-widget.cloudinary.com/global/all.js"
+        type="text/javascript"></script>
+
+<!--  Cloudinary widget creation and parameter specification  -->
+<script type="text/javascript">
+    var myWidget = cloudinary.createUploadWidget({
+        cloudName: 'playwriteot',
+        uploadPreset: 'v3u8fprx',
+        sources: ["local", "url"],
+        multiple: false
+
+    },
+        (error, result) => {
+
+            if (!error && result && result.event === "success") {
+                console.log('Done! Here is the image info: ', result.info);
+            }
+        }
+    );
+
+    document.getElementById("upload_widget").addEventListener("click", function () {
+        myWidget.open();
+    }, false);
+</script>
+
+

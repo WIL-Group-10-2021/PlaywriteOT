@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+
+@{var loggedin = Context.Session.GetString("LoggedInUser"); }
+
+
+<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -60,6 +65,8 @@
 
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
+
+
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
@@ -72,10 +79,17 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                             </li>
-                            @* OR <!-- <li>@Html.ActionLink("Our Services", "Services", "Home", new { @class = "nav-link" })</li>--> *@
+                            <li class="nav-item">
+                                @{if (loggedin != null)
+                                  {
+                                      <a class="navbar-brand" asp-area="" asp-controller="Newsletter" asp-action="NewUpload">Newsletters</a>
+                                  }    
+                                }
+                            </li>
+
                         </ul>
 
-                        <!-- search -->
+                        <!-- search -->  @* OR <!-- <li>@Html.ActionLink("Our Services", "Services", "Home", new { @class = "nav-link" })</li>--> *@
                         <!--<ul class="navbar-nav search-right mt-lg-0 mt-2">
                             <li class="nav-item mr-2" title="Search">
                                 <a href="#search" class="btn search-search">
