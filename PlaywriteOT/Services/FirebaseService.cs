@@ -69,7 +69,7 @@ namespace PlaywriteOT.Services
                                                      .Where(u => u.Object.Email == newDBUser.Email)
                                                      .FirstOrDefault();    //finds user  
 
-                if (dbUser.Object.Email != null) //checks for duplicate emails
+                if (dbUser != null) //checks for duplicate emails
                 {
                     return false;   //if user already exists 
                 }

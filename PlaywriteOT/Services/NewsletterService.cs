@@ -30,9 +30,12 @@ namespace PlaywriteOT.Services
            // bodyText = "Test body where is the attc";
            // attachmentUrl = "https://res.cloudinary.com/playwriteot/image/upload/v1630614158/TestPDF_oxpqwt.pdf";
 
-
+            if (string.IsNullOrEmpty(headingText))
+                throw new ArgumentException("Value cannot be null or empty.", nameof(headingText));
             if (string.IsNullOrEmpty(bodyText))
                 throw new ArgumentException("Value cannot be null or empty.", nameof(bodyText));
+            if (string.IsNullOrEmpty(attachmentUrl))
+                throw new ArgumentException("Value cannot be null or empty.", nameof(attachmentUrl));
 
             List<long?> exclusionListIds = new List<long?>();
                         exclusionListIds.Add(3);

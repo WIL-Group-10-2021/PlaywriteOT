@@ -25,21 +25,29 @@ namespace PlaywriteOT.Controllers
         }
 
         [HttpPost]
-        public IActionResult NewUpload(string headingText, string bodyText)
+        public IActionResult NewUpload(string headingT, string bodyT, string url)
         {
             NewsletterService ns = new NewsletterService();
             //call cloudinary Upload 
             //pass through newsletter or get link through upload component
 
-            string pdfLink = "";
-
-            if (ns.CreateNewCampaign(headingText,bodyText,pdfLink))
+            try
             {
-                
+                if (!ns.CreateNewCampaign(headingT, bodyT, url))
+                {
+                    ViewBag.Error = "Makes sure all fields are filled in and you have uploaded a newsletter";
+                    return View();
+                }
+                return RedirectToAction("SentStatus");
+            }
+            catch (Exception e)
+            {
+                ViewBag.Error = "Newsletters failed to send";
+                return View();
             }
 
-            
-            return View();
+
+
         }
 
 
@@ -64,6 +72,14 @@ namespace PlaywriteOT.Controllers
 
             return View(currentUser.Email); //placeholder
         }
+
+
+        [HttpGet]
+        public IActionResult SentStatus()
+        {
+            return View();
+        }
+
 
         /*[HttpPost]
         public ActionResult CreateSubscriber()

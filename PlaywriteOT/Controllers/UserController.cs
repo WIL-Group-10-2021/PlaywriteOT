@@ -8,6 +8,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace PlaywriteOT.Controllers
 {
@@ -22,11 +23,11 @@ namespace PlaywriteOT.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            NewsletterService ns = new NewsletterService();
+            /*NewsletterService ns = new NewsletterService();
             if (ns.CreateNewCampaign("","",""))
             {
                 return View();
-            }
+            }*/
             return View();
 
 
@@ -38,6 +39,7 @@ namespace PlaywriteOT.Controllers
 
             if (await AuthHold.Instance.LoginUser(email, password))
             {
+                HttpContext.Session.SetString("LoggedInUser", email);
                 return RedirectToAction("AdminHome", "Home");
             }
 
