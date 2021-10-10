@@ -39,8 +39,8 @@ Therefore, to deploy the project, run the following commands in the project dire
 - [@Neliswa](https://github.com/Neliswa30)
 - [@CharmaineD](https://github.com/19003337)
 - [@Japhet](https://github.com/Japhet-github)
-- [@19006697](https://github.com/19006697)
+- [@Rochelle](https://github.com/19006697)
 - [@CaidenM](https://github.com/CaidanM)
-- [@AlphaAemilius](https://github.com/AlphaAemilius)
+- [@EmileJonkers](https://github.com/AlphaAemilius)
 
   
