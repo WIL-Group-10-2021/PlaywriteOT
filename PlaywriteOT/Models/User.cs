@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PlaywriteOT.Models
+namespace PlaywriteOT_v3.Models
 {
     public class User
     {
-        public User()
-        {
-            
-        }
-                                        
+        // empty constructor
+        public User() { }
+
         public int UId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
+// firebase
 using Firebase.Database;
 using Firebase.Database.Query;
-using PlaywriteOT.Models;
-// ReSharper disable All
+//models
+using PlaywriteOT_v3.Models;
 
-namespace PlaywriteOT.Services
+namespace PlaywriteOT_v3.Services
 {
     public class FirebaseService
     {
@@ -21,7 +20,7 @@ namespace PlaywriteOT.Services
         /// </summary>
         public FirebaseService()
         {
-            _firebaseClient = new FirebaseClient(DBString);                                                    
+            _firebaseClient = new FirebaseClient(DBString);
         }
 
         /// <summary>
@@ -29,7 +28,7 @@ namespace PlaywriteOT.Services
         /// </summary>
         /// <param name="email"> Email address of user </param>
         /// <returns> User with specified email if it exists </returns>
-        public async Task<User> FindUser(string email)  
+        public async Task<User> FindUser(string email)
         {
             try
             {
@@ -45,14 +44,13 @@ namespace PlaywriteOT.Services
                         UPassword = x.Object.UPassword,
                         USalt = x.Object.USalt,
 
-                    }).FirstOrDefault();                            //finds user and converts to DBUser        
+                    }).FirstOrDefault(); //finds user and converts to DBUser        
                 return dbUser;
             }
             catch (Exception)
             {
-                return new User();                                  //returns null user if not found
+                return new User(); //returns null user if not found
             }
-
         }
 
         /// <summary>
@@ -60,15 +58,13 @@ namespace PlaywriteOT.Services
         /// </summary>
         /// <param name="newDBUser"> Database format of User Object</param>
         /// <returns> A boolean depending on object's successful creation</returns>
-        public async Task<bool> CreateUser(User newDBUser)
+        public async Task<bool> CreateUser (User newDBUser)
         {
             try
             {
-                
                 var dbUser = (await _firebaseClient.Child("Users").OnceAsync<User>())
                                                      .Where(u => u.Object.Email == newDBUser.Email)
-                                                     .FirstOrDefault();    //finds user  
-
+                                                     .FirstOrDefault(); //finds user
                 if (dbUser != null) //checks for duplicate emails
                 {
                     return false;   //if user already exists 
@@ -84,7 +80,6 @@ namespace PlaywriteOT.Services
 
                 throw;
             }
-
         }
 
         /// <summary>
@@ -120,7 +115,6 @@ namespace PlaywriteOT.Services
             return false;
 
         }
-
 
         public async Task<bool> UpdateUser(User updateUser)
         {

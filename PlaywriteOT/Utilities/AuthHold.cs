@@ -1,5 +1,5 @@
-﻿using PlaywriteOT.Models;
-using PlaywriteOT.Services;
+﻿using PlaywriteOT_v3.Models;
+using PlaywriteOT_v3.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +7,19 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlaywriteOT.Utilities
+namespace PlaywriteOT_v3.Utilities
 {
     public class AuthHold
     {
-
+        // empty constructor
         private AuthHold()
         {
 
         }
 
         public static AuthHold instance = null;
-        public static AuthHold Instance  //singleton 
+
+        public static AuthHold Instance //singleton
         {
             get
             {
@@ -29,14 +30,15 @@ namespace PlaywriteOT.Utilities
                 return instance;
             }
         }
-        public FirebaseService fireServ = new FirebaseService();
 
+        public FirebaseService fireServ = new FirebaseService();
 
         public User dbUser { get; set; }
         public UserVM currentUser { get; set; }
 
         /// <summary>
-        /// Searches firebase for specified email through FirebaseService, and validates specified password if user was found. 
+        /// Searches firebase for specified email through FirebaseService, 
+        /// and validates specified password if user was found. 
         /// If user found, local UserVm object is populated.
         /// </summary>
         /// <param name="email"></param>
@@ -44,27 +46,32 @@ namespace PlaywriteOT.Utilities
         /// <returns> A <strong>boolean</strong> depending on successful and validated login </returns>
         public async Task<bool> LoginUser(string email, string passw)
         {
-            dbUser = await fireServ.FindUser(email);                            //find user from firebase
-            if ( dbUser.Email == null)                                          //if user doesnt exists
+            dbUser = await fireServ.FindUser(email); //find user from firebase
+            if (dbUser.Email == null) //if user doesnt exists
             {
                 return false;  //if no user
             }
 
-            using var hmac = new HMACSHA512(dbUser.USalt);                                              //feeds user salt to HMAC
-            byte[] enteredPass = hmac.ComputeHash(Encoding.UTF8.GetBytes(passw));                       //computes hash of inputted password
+            //feeds user salt to HMAC
+            using var hmac = new HMACSHA512(dbUser.USalt);
+            //computes hash of inputted password
+            byte[] enteredPass = hmac.ComputeHash(Encoding.UTF8.GetBytes(passw));
 
-
-            try                                                                                         //incase there is a length mismatch in password comparisson
+            //incase there is a length mismatch in password comparisson
+            try
             {
-                for (int i = 0; i < dbUser.UPassword.Length; i++)                                       //checks entered byte array against stored
+                //checks entered byte array against stored
+                for (int i = 0; i < dbUser.UPassword.Length; i++)
                 {
                     if (enteredPass[i] != dbUser.UPassword[i])
                     {
-                        return false;                                                                   //if incorrect password
+                        //if incorrect password
+                        return false;
                     }
                 }
 
-                currentUser = new UserVM                                                                //creates new VM User for local use
+                //creates new VM User for local use
+                currentUser = new UserVM
                 {
                     FName = dbUser.FirstName,
                     LName = dbUser.LastName,
@@ -75,19 +82,24 @@ namespace PlaywriteOT.Utilities
                 return true;
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return false; //if incorrect password
+                //if incorrect password
+                return false;
             }
         }
-        public async Task<bool> RegisterUser(UserVM newUser, string passw) //registers new user
+
+        //registers new user
+        public async Task<bool> RegisterUser(UserVM newUser, string passw)
         {
 
             try //creates new user
             {
                 using var hmac = new HMACSHA512();
-                byte[] bytesPass = hmac.ComputeHash(Encoding.UTF8.GetBytes(passw));  //creates new hash based on user password
-                byte[] bytesSalt = hmac.Key;                                         //gets salt 
+                //creates new hash based on user password
+                byte[] bytesPass = hmac.ComputeHash(Encoding.UTF8.GetBytes(passw));
+                //gets salt
+                byte[] bytesSalt = hmac.Key; 
 
                 User newDBUser = new User
                 {
@@ -97,18 +109,18 @@ namespace PlaywriteOT.Utilities
                     UPassword = bytesPass,
                     USalt = bytesSalt,
                     Admin = true
-                };                                                                   //creates firebase user object
+                }; //creates firebase user object
 
-                return await fireServ.CreateUser(newDBUser);                         //returns true if successful      
+                //returns true if successful
+                return await fireServ.CreateUser(newDBUser);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
                 return false;
-
             }
         }
-        public async Task<bool> SubscribeToNews(string email) 
+        public async Task<bool> SubscribeToNews(string email)
         {
             return await fireServ.AddSubscription(email);
         }
@@ -116,9 +128,11 @@ namespace PlaywriteOT.Utilities
         {
             return await fireServ.RemoveSubscription(email);
         }
-/*        public async Task<bool> UpdateUserDetails(UserVM updatedUser)
+        /*
+        public async Task<bool> UpdateUserDetails(UserVM updatedUser)
         {
             return await fireServ.UpdateUser(updatedUser);
-        }*/
+        }
+        */
     }
 }

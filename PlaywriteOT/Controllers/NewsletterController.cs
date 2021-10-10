@@ -1,16 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PlaywriteOT.Models;
-using PlaywriteOT.Services;
-using PlaywriteOT.Utilities;
+using PlaywriteOT_v3.Models;
+using PlaywriteOT_v3.Services;
+using PlaywriteOT_v3.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PlaywriteOT.Controllers
+namespace PlaywriteOT_v3.Controllers
 {
     public class NewsletterController : Controller
     {
+        public IActionResult Index()
+        {
+            return View();
+        }
 
         [HttpGet]
         public IActionResult Dashboard()
@@ -40,16 +44,12 @@ namespace PlaywriteOT.Controllers
                 }
                 return RedirectToAction($"SentStatus");
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 ViewBag.Error = "Newsletters failed to send";
                 return View();
             }
-
-
-
         }
-
 
         [HttpGet]
         public IActionResult Subscription()
@@ -67,12 +67,10 @@ namespace PlaywriteOT.Controllers
         [HttpGet]
         public ActionResult CreateSubscriber()
         {
-
             UserVM currentUser = AuthHold.Instance.currentUser;
 
             return View(currentUser.Email); //placeholder
         }
-
 
         [HttpGet]
         public IActionResult SentStatus()
@@ -80,13 +78,11 @@ namespace PlaywriteOT.Controllers
             return View();
         }
 
-
         /*[HttpPost]
         public ActionResult CreateSubscriber()
         {
-
-
             return View(); //placeholder
         }*/
     }
 }
+

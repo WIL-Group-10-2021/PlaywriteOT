@@ -1,26 +1,23 @@
 ﻿@using Microsoft.AspNetCore.Http;
 
-@{var loggedin = Context.Session.GetString("LoggedInUser"); }
-
+@{ var loggedin = Context.Session.GetString("LoggedInUser"); }
 
 <!DOCTYPE html>
 
 <html lang="en">
 <head>
-
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - PlaywriteOT</title>
 
-    <link href="~/css/style-starter.css" rel="stylesheet" />
+    <title>@ViewData["Title"] - PlaywriteOT_v3</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/style-liberty.css" />
     <link href="~/css/style-login-register.css" rel="stylesheet" />
 
-    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/js/easyResponsiveTabs.js"></script>
-    <script src="~/js/jquery-1.9.1.min.js"></script>
-    <script src="~/js/jquery-3.3.1.min.js"></script>
-    <script src="~/js/owl.carousel.js"></script>
-    <script src="~/js/site.js"></script>
+    <script src="~/lib/jquery/dist/jquery-1.9.1.min.js"></script>
 
     <style>
         #sib-container input:-ms-input-placeholder {
@@ -41,67 +38,86 @@
             color: #c0ccda;
         }
     </style>
-    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
+    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
 </head>
 
 <body>
-    <!-- ---- header ---- -->
+    <!-- header -->
     <header id="site-header" class="fixed-top">
         <section class="w3l-header-4">
             <div class="container">
-                <nav class="navbar navbar-expand-lg">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <!--WEBSITE NAME -->
                     <h1>
-                        <a class=" navbar-brand " asp-area="" asp-controller="Home" asp-action="Index">
-                            PlaywriteOT
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                            PlaywriteOT_v3
                         </a>
                     </h1>
-
+                    <!-- dropdown menu icon -->
                     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
                             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="fa icon-expand fa-bars"></span>
                         <span class="fa icon-close fa-times"></span>
                     </button>
-
+                    <!-- MAIN PAGES -->
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
-
-
+                            <!-- HOME -->
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home </a>
                             </li>
-                            <li class="nav-item ">
+                            <!-- ABOUT -->
+                            <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
                             </li>
+                            <!-- SERVICES -->
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Services">Our Services</a>
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Services">Services</a>
                             </li>
+                            <!-- CONTACT -->
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                             </li>
+                            <!-- NEWSLETTER -->
                             <li class="nav-item">
-                                @{if (loggedin != null)
-                                  {
-                                      <a class="navbar-brand" asp-area="" asp-controller="Newsletter" asp-action="NewUpload">Newsletters</a>
-                                  }    
-                                }
+                                @{ if (loggedin != null)
+                                    {
+                        <a class="navbar-link" asp-area="" asp-controller="Newsletter" asp-action="NewUpload">Newsletters</a> } }
                             </li>
-
                         </ul>
                     </div>
+                    <!-- //MAIN PAGES -->
+                    <!-- toggle switch for light and dark theme -->
+                    <!--
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                    -->
+                    <!-- //toggle switch for light and dark theme -->
                 </nav>
             </div>
         </section>
     </header>
-    <!-- ---- /header ---- -->
-
-    <div style="min-height:60vh" class="container">
+    <!-- //header -->
+    <!-- body -->
+    <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
+    <!-- //body -->
     <!-- footer -->
     <section class="w3l-footer-29-main">
         <div class="footer-29 py-5">
@@ -114,7 +130,11 @@
                             </a>
                         </div>
                         <p>
-                            Short Description of what the website is about.
+                            We help kids develop, recover, improve in regards to a condition or injury,
+                            as well as supervising the skills needed to perform daily activities.
+                        </p>
+                        <p>
+                            Feel free to check out our social media here below :)
                         </p>
                         <div class="main-social-footer-29 mt-4">
                             <a href="https://www.facebook.com/playwriteOT/" target="_blank" class="facebook"><span class="fa fa-facebook"></span></a>
@@ -142,11 +162,7 @@
                             <li><a href="#marketplace">Digital Services</a></li>
                             <li><a href="#experts">Assistance</a></li>
                             <li><a href="#platform">Milestones</a></li>
-                            <li><a href="#marketplace">OT Services</a></li>
                             <li><a asp-controller="User" asp-action="Login">Login</a></li>
-
-
-
                         </ul>
 
                     </div>
@@ -205,33 +221,37 @@
 
     </section>
     <!-- //footer -->
+    <!-- javascripts file here -->
+    <script src="~/js/theme-change.js"></script>
+    <!-- //javascripts file here -->
+    <!-- scripts
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+    //scripts -->
+    <!---->
 
+    <!-- START - SendInBlue Scripts  -->
+    <script>
+        window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+        window.LOCALE = 'en';
+        window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+
+        window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
+
+        window.GENERIC_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+
+        window.translation = {
+            common: {
+                selectedList: '{quantity} list selected',
+                selectedLists: '{quantity} lists selected'
+            }
+        };
+
+        var AUTOHIDE = Boolean(0);
+    </script>
+    <script src="https://sibforms.com/forms/end-form/build/main.js"></script>
+    <!-- END - SendInBlue Scripts  -->
 </body>
 </html>
-
-<!-- START - SendInBlue Scripts  -->
-<script>
-    window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
-    window.LOCALE = 'en';
-    window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
-
-    window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
-
-    window.GENERIC_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
-
-
-
-
-    window.translation = {
-        common: {
-            selectedList: '{quantity} list selected',
-            selectedLists: '{quantity} lists selected'
-        }
-    };
-
-    var AUTOHIDE = Boolean(0);
-</script>
-<script src="https://sibforms.com/forms/end-form/build/main.js"></script>
-
-
-<!-- END - SendInBlue Scripts  -->

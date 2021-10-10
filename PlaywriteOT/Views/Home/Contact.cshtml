@@ -1,15 +1,11 @@
-﻿
-@{
-    ViewData["Title"] = "Contact";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@{ ViewData["Title"] = "Contact"; }
 
 <!-- <h1>Contact</h1> -->
 <!-- breadcrumb -->
 <section class="w3l-breadcrumb">
     <div class="container">
         <ul class="breadcrumbs-custom-path">
-            <li class="nav-item @@home__active">
+            <li class="nav-item active">
                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
             </li>
             <li class="active">/ Contact Us</li>
@@ -27,7 +23,7 @@
             <div class="d-grid cont-main-top mt-lg-5 mt-4">
                 <!-- contact form -->
                 <div class="contacts12-main">
-                    <form action="https://sendmail.w3layouts.com/submitForm" method="post" class="main-input">
+                    <form action="https://submitFormHere" method="post" class="main-input">
                         <div class="top-inputs d-grid">
                             <input type="text" placeholder="Name" name="w3lName" id="w3lName" required="">
                             <input type="email" name="email" placeholder="Email" id="w3lSender" required="">
@@ -63,13 +59,13 @@
                         </div>
                         <div class="social-icons-con">
                             <h4 class="mb-3">Connect with us:</h4>
-                            <a href="https://www.facebook.com/playwriteOT/"><span class="fa fa-facebook-square" aria-hidden="true"></span></a>
+                            <a href="https://www.facebook.com/playwriteOT/" target="_blank"><span class="fa fa-facebook-square" aria-hidden="true"></span></a>
 
                             <!-- // other social media pages (if available)
-                            <a href="#twitter"><span class="fa fa-twitter-square" aria-hidden="true"></span></a>
-                            <a href="#instagram"><span class="fa fa-instagram" aria-hidden="true"></span></a>
-                            <a href="#linkedin"><span class="fa fa-linkedin-square" aria-hidden="true"></span></a>
-                        -->
+                                <a href="#twitter"><span class="fa fa-twitter-square" aria-hidden="true"></span></a>
+                                <a href="#instagram"><span class="fa fa-instagram" aria-hidden="true"></span></a>
+                                <a href="#linkedin"><span class="fa fa-linkedin-square" aria-hidden="true"></span></a>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -93,8 +89,8 @@
 </section>
 <!-- //contact -->
 <!--  javascripts file here -->
-<script src="~/js/jquery-3.3.1.min.js"></script>
-<script src="~/js/jquery-1.9.1.min.js"></script>
+<script src="~/lib/jquery/dist/jquery-1.9.1.min.js"></script>
+<script src="~/lib/jquery/dist/jquery-3.3.1.min.js"></script>
 <!-- faq -->
 <script>
     const items = document.querySelectorAll(".accordion button");
@@ -133,78 +129,6 @@
             }
         });
     });</script>
-
-<!-- owl carousel -->
-<script src="~/js/owl.carousel.js"></script>
-<!-- script for banner slider-->
-<script>
-    $(document).ready(function () {
-        $('.owl-one').owlCarousel({
-            loop: true,
-            margin: 0,
-            nav: false,
-            responsiveClass: true,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            autoplaySpeed: 1000,
-            autoplayHoverPause: false,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                480: {
-                    items: 1
-                },
-                667: {
-                    items: 1
-                },
-                1000: {
-                    items: 1
-                }
-            }
-        })
-    })</script>
-<!-- //script -->
-<!-- owl carousel -->
-<!-- script for customers -->
-<script>
-    $(document).ready(function () {
-        $('.owl-three').owlCarousel({
-            loop: true,
-            margin: 0,
-            nav: false,
-            dots: false,
-            responsiveClass: true,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            autoplaySpeed: 1000,
-            autoplayHoverPause: false,
-            responsive: {
-                0: {
-                    items: 3,
-                    nav: true
-                },
-                480: {
-                    items: 3,
-                    nav: true
-                },
-                667: {
-                    items: 3,
-                    nav: true
-                },
-                800: {
-                    items: 4,
-                    nav: true
-                },
-                1000: {
-                    items: 5,
-                    nav: true
-                }
-            }
-        })
-    })</script>
-<!-- //customers owlcarousel -->
-<!-- disable body scroll which navbar is in active -->
 <!-- <script>
   $(function () {
     $('.navbar-toggler').click(function () {

@@ -1,6 +1,6 @@
 using System;
 
-namespace PlaywriteOT.Models
+namespace PlaywriteOT_v3.Models
 {
     public class ErrorViewModel
     {
