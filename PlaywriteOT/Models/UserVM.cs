@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PlaywriteOT.Models
+namespace PlaywriteOT_v3.Models
 {
     public class UserVM
     {
-        public UserVM()
-        {
-
-        }
+        // empty constructor
+        public UserVM() { }
 
         public UserVM(string fName, string lName, string email, bool uRole)
         {
@@ -25,6 +23,4 @@ namespace PlaywriteOT.Models
         public string Email { get; set; }
         public bool Admin { get; set; }
     }
-
 }
-

@@ -1,0 +1,57 @@
+﻿@{ ViewData["Title"] = "Development Delay"; }
+
+<!-- https://www.w3schools.com/cssref/pr_padding.asp -->
+<head>
+    <style>
+        p.ex1 {
+            padding: 30px;
+        }
+
+        p.ex2 {
+            border: 1px solid red;
+            margin: 35px;
+        }
+    </style>
+</head>
+
+<!-- breadcrumb -->
+<section class="w3l-breadcrumb">
+    <div class="container">
+        <ul class="breadcrumbs-custom-path">
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Services">/ Services /</a>
+            </li>
+            <li class="active">Development Delay</li>
+        </ul>
+    </div>
+</section>
+
+<section class="w3l-aboutblock1" id="about">
+    <div class="midd-w3 py-5">
+        <div class="container py-lg-5 py-md-3 py-2">
+            <div class="row">
+                <!-- content on the left -->
+                <div class="col-lg-6 mb-lg-0 mb-md-5 mb-5 align-self">
+                    <h3 class="title-big mx-0">Development Delay</h3>
+                    <p class="mt-md-4 mt-3">
+                        content here
+                    </p>
+                    <p class="mt-3">
+                        content here
+                    </p>
+                </div>
+                <!-- // content on the left -->
+                <!-- image on the right -->
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <img src="~/images/PlaywriteOT/kids-1.png" alt="" class="radius-image img-fluid">
+                    </div>
+                </div>
+                <!-- image on the right -->
+            </div>
+        </div>
+    </div>
+</section>

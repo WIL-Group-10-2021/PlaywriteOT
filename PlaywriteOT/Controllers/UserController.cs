@@ -1,25 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using PlaywriteOT.Models;
-using PlaywriteOT.Services;
-using PlaywriteOT.Utilities;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using PlaywriteOT_v3.Models;
+using PlaywriteOT_v3.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 
-namespace PlaywriteOT.Controllers
+namespace PlaywriteOT_v3.Controllers
 {
     public class UserController : Controller
     {
-
         public IActionResult Index()
         {
             return View();
         }
 
+        // LOGIN
         [HttpGet]
         public IActionResult Login()
         {
@@ -29,14 +26,11 @@ namespace PlaywriteOT.Controllers
                 return View();
             }*/
             return View();
-
-
         }
 
         [HttpPost]
         public async Task<IActionResult> Login(string email, string password)
         {
-
             if (await AuthHold.Instance.LoginUser(email, password))
             {
                 HttpContext.Session.SetString("LoggedInUser", email);
@@ -48,7 +42,7 @@ namespace PlaywriteOT.Controllers
 
         }
 
-
+        // REGISTER
         [HttpGet]
         public IActionResult Register()
         {
@@ -58,7 +52,8 @@ namespace PlaywriteOT.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(string firstName, string lastName, string email, string password, string confirmPassword)
         {
-            if (password.Equals(confirmPassword)) //user entered the matching passwords
+            //user entered the matching passwords
+            if (password.Equals(confirmPassword)) 
             {
                 UserVM userVM = new UserVM()
                 {
@@ -67,9 +62,8 @@ namespace PlaywriteOT.Controllers
                     Email = email
                 };
 
-
-
-                if (await AuthHold.Instance.RegisterUser(userVM, password)) //if registration successsfull
+                //if registration successsfull
+                if (await AuthHold.Instance.RegisterUser(userVM, password))
                 {
                     return RedirectToAction("Login");
                 }
@@ -79,13 +73,11 @@ namespace PlaywriteOT.Controllers
                     return View();
                 }
             }
-            else    //passwords do not match
+            else //passwords do not match
             {
                 ViewBag.Error = "Passwords do not match";
                 return View();
             }
-
-
         }
 
         [HttpGet]

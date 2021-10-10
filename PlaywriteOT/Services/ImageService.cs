@@ -2,15 +2,15 @@
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-using PlaywriteOT.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PlaywriteOT_v3.Models;
 
-namespace PlaywriteOT.Services
+namespace PlaywriteOT_v3.Services
 {
-    public class ImageService 
+    public class ImageService
     {
         private readonly Cloudinary _cloudinary;
 
