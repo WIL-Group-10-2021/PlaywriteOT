@@ -42,7 +42,7 @@ namespace PlaywriteOT_v3.Controllers
                     ViewBag.Error = "Makes sure all fields are filled in and you have uploaded a newsletter";
                     return View();
                 }
-                return RedirectToAction("SentStatus");
+                return RedirectToAction($"SentStatus");
             }
             catch (Exception)
             {
