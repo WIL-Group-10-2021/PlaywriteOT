@@ -7,34 +7,35 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 :root {
-  --blue: #007bff;
-  --indigo: #6610f2;
-  --purple: #6f42c1;
-  --pink: #e83e8c;
-  --red: #dc3545;
-  --orange: #fd7e14;
-  --yellow: #ffc107;
-  --green: #28a745;
-  --teal: #20c997;
-  --cyan: #17a2b8;
-  --white: #fff;
-  --gray: #6c757d;
-  --gray-dark: #343a40;
-  --primary: #f3525a;
-  --secondary: #6c757d;
-  --success: #28a745;
-  --info: #17a2b8;
-  --warning: #ffc107;
-  --danger: #dc3545;
-  --light: #f8f9fa;
-  --dark: #343a40;
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #1EBFF7;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
 
 *,
 *::before,
@@ -134,7 +135,7 @@ sup {
   top: -.5em; }
 
 a {
-  color: #f3525a;
+  color: #ffffff;
   text-decoration: none;
   background-color: transparent; }
   a:hover {
@@ -1822,13 +1823,15 @@ fieldset:disabled a.btn {
   pointer-events: none; }
 
 .btn-primary {
-  color: #fff;
-  background-color: #f3525a;
-  border-color: #f3525a; }
-  .btn-primary:hover {
     color: #fff;
-    background-color: #f12e38;
-    border-color: #f0222d; }
+    background-color: #1EBFF7;
+    border-color: #1EBFF7;
+}
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #abe4f8;
+        border-color: #abe4f8;
+    }
   .btn-primary:focus, .btn-primary.focus {
     color: #fff;
     background-color: #f12e38;
@@ -2030,12 +2033,14 @@ fieldset:disabled a.btn {
       box-shadow: 0 0 0 0.2rem rgba(82, 88, 93, 0.5); }
 
 .btn-outline-primary {
-  color: #f3525a;
-  border-color: #f3525a; }
-  .btn-outline-primary:hover {
-    color: #fff;
-    background-color: #f3525a;
-    border-color: #f3525a; }
+    color: #1EBFF7;
+    border-color: #1EBFF7;
+}
+    .btn-outline-primary:hover {
+        color: #fff;
+        background-color: #1EBFF7;
+        border-color: #1EBFF7;
+    }
   .btn-outline-primary:focus, .btn-outline-primary.focus {
     box-shadow: 0 0 0 0.2rem rgba(243, 82, 90, 0.5); }
   .btn-outline-primary.disabled, .btn-outline-primary:disabled {
@@ -9552,23 +9557,24 @@ a.text-dark:hover, a.text-dark:focus {
   clip: auto; }
 
 :root {
-  --primary-color: #f3525a;
-  --primary-dark: #172541;
-  --secondary-color: #1545CB;
-  --layer: rgba(0, 0, 0, 0.5);
-  --font-color: #666;
-  --bg-color: #fff;
-  --heading-color: #3f3a64;
-  --border-radius: 5px;
-  --border-radius-full: 35px;
-  --border-color: transparent;
-  --border-color-light: #eee;
-  --nav-color: #292922;
-  --dropdown-color: #fff;
-  --iframe-filter: grayscale(0%);
-  --bg-grey: #f7f7f7;
-  --bg-lightgrey: #f8f9fa;
-  --layer: rgba(0, 0, 0, 0.45); }
+    --primary-color: #1EBFF7;
+    --primary-dark: #172541;
+    --secondary-color: #1545CB;
+    --layer: rgba(0, 0, 0, 0.5);
+    --font-color: #666;
+    --bg-color: #fff;
+    --heading-color: #3f3a64;
+    --border-radius: 5px;
+    --border-radius-full: 35px;
+    --border-color: transparent;
+    --border-color-light: #eee;
+    --nav-color: #292922;
+    --dropdown-color: #fff;
+    --iframe-filter: grayscale(0%);
+    --bg-grey: #f7f7f7;
+    --bg-lightgrey: #f8f9fa;
+    --layer: rgba(0, 0, 0, 0.45);
+}
 
 [data-theme="dark"] {
   --primary-color: #f3525a;
@@ -9891,15 +9897,16 @@ header.fixed-top {
   position: sticky !important; }
 
 header {
-  padding: 0px;
-  transition: all 0.4s ease 0s;
-  height: 95px;
-  padding: 20px 0;
-  display: grid;
-  align-items: center;
-  background: var(--bg-color);
-  z-index: 10 !important;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05); }
+    padding: 0px;
+    transition: all 0.4s ease 0s;
+    height: 95px;
+    padding: 20px 0;
+    display: grid;
+    align-items: center;
+    background: #1EBFF7;
+    z-index: 10 !important;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
+}
 
 header.nav-fixed {
   padding: 0px;

@@ -82,9 +82,12 @@
                             </li>
                             <!-- NEWSLETTER -->
                             <li class="nav-item">
-                                @{ if (loggedin != null)
+                                @{
+                                    if (loggedin != null)
                                     {
-                        <a class="navbar-link" asp-area="" asp-controller="Newsletter" asp-action="NewUpload">Newsletters</a> } }
+                                        <a class="navbar-link" asp-area="" asp-controller="Newsletter" asp-action="NewUpload">Newsletters</a>
+                                    }
+                                }
                             </li>
                         </ul>
                     </div>
@@ -213,7 +216,6 @@
     @RenderSection("Scripts", required: false)
     //scripts -->
     <!---->
-
     <!-- START - SendInBlue Scripts  -->
     <script>
         window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
