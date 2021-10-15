@@ -9,7 +9,7 @@ using sib_api_v3_sdk.Api;
 using sib_api_v3_sdk.Client;
 using sib_api_v3_sdk.Model;
 
-namespace PlaywriteOT_v3.Services
+namespace PlaywriteOT.Services
 {
     public class NewsletterService //SendInBlue Service
     {

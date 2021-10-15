@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PlaywriteOT_v3.Models;
-using PlaywriteOT_v3.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PlaywriteOT.Models;
+using PlaywriteOT.Utilities;
 
-namespace PlaywriteOT_v3.Controllers
+namespace PlaywriteOT.Controllers
 {
     public class UserController : Controller
     {

@@ -6,9 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using PlaywriteOT_v3.Models;
+using PlaywriteOT.Models;
 
-namespace PlaywriteOT_v3.Services
+namespace PlaywriteOT.Services
 {
     public class ImageService
     {

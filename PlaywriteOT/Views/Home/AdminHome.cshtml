@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Admin Home Page";
+}
+
+<div class="text-center py-4">
+    <h3 class="title-big">Welcome @ViewBag.UserName</h3>
+    <p>What would you like to do today?</p>
+</div>
+<div id="adminHome" class="d-flex justify-content-center ">
+    <div class="form-group text-center justify-content-center">
+        <div class="row">
+            <label class="pt-2 col" name="password"><b>Register a new Therapist</b></label>
+        </div>
+        <div class="row col-6">
+            <a asp-area="" asp-controller="User" asp-action="Register"
+               class="btn rounded btn-outline-primary btn-lg rounded col w-50">Register</a>
+        </div>
+    </div>
+</div>

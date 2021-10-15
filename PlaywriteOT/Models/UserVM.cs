@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PlaywriteOT_v3.Models
+namespace PlaywriteOT.Models
 {
     public class UserVM
     {

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PlaywriteOT_v3.Controllers
+namespace PlaywriteOT.Controllers
 {
-    public class ServicesDiseasesController : Controller
+    public class NavigationController : Controller
     {
         public IActionResult AutismSpectrumDisorder()
         {
@@ -32,5 +32,18 @@ namespace PlaywriteOT_v3.Controllers
         {
             return View();
         }
+        public IActionResult TipsForTherapists()
+        {
+            return View();
+        }
+        public IActionResult TipsForTeachers()
+        {
+            return View();
+        }
+        public IActionResult TipsForParents()
+        {
+            return View();
+        }
+
     }
 }

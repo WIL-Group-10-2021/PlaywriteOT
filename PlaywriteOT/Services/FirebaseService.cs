@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 // firebase
 using Firebase.Database;
 using Firebase.Database.Query;
+using PlaywriteOT.Models;
 //models
-using PlaywriteOT_v3.Models;
 
-namespace PlaywriteOT_v3.Services
+namespace PlaywriteOT.Services
 {
     public class FirebaseService
     {

@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using PlaywriteOT_v3.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using PlaywriteOT.Models;
 
-namespace PlaywriteOT_v3.Controllers
+namespace PlaywriteOT.Controllers
 {
     public class HomeController : Controller
     {
@@ -18,42 +18,26 @@ namespace PlaywriteOT_v3.Controllers
             _logger = logger;
         }
 
-        /*
-         * MAIN PAGES - header
-         */
-
-        // home
         public IActionResult Index()
         {
             return View();
         }
-
-        // about
         public IActionResult About()
         {
             return View();
         }
-
-        /*
-         * SUBPAGES UNDER MAIN PAGES are formatted as follow:
-         * 
-         * MAIN_SUBPAGE_CONTROLLER
-         * 
-         * example: ServicesDiseaseController
-         */
-
-        // services
         public IActionResult Services()
         {
             return View();
         }
-
-        // contact
+        public IActionResult AdminHome()
+        {
+            return View();
+        }
         public IActionResult Contact()
         {
             return View();
         }
-
         public IActionResult Privacy()
         {
             return View();
