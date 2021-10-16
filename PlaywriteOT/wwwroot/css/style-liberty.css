@@ -3038,7 +3038,7 @@ input[type="button"].btn-block {
   display: block;
   padding: 0.5rem 1rem; }
   .nav-link:hover, .nav-link:focus {
-    text-decoration: none; }
+    text-decoration: #000000; }
   .nav-link.disabled {
     color: #6c757d;
     pointer-events: none;
@@ -9576,23 +9576,6 @@ a.text-dark:hover, a.text-dark:focus {
     --layer: rgba(0, 0, 0, 0.45);
 }
 
-[data-theme="dark"] {
-  --primary-color: #f3525a;
-  --primary-dark: #172541;
-  --secondary-color: #1545CB;
-  --layer: rgba(0, 0, 0, 0.65);
-  --font-color: #c2c2c2;
-  --bg-color: #182C44;
-  --heading-color: #fff;
-  --border-color: rgba(255, 255, 255, 0.2);
-  --border-color-light: rgba(255, 255, 255, 0.1);
-  --nav-color: #fff;
-  --dropdown-color: #121725;
-  --iframe-filter: grayscale(100%);
-  --bg-grey: #112339;
-  --bg-lightgrey: #112339;
-  --layer: rgba(0, 0, 0, 0.65); }
-
 .noscroll {
   overflow: hidden;
   height: 100vh; }
@@ -9952,7 +9935,8 @@ header.nav-fixed {
 
 .w3l-header-4 .navbar-expand-lg .navbar-nav .nav-link:hover,
 .w3l-header-4 .navbar-light .navbar-nav .show > .nav-link:hover {
-  color: var(--primary-color); }
+    color: #000000;
+}
 
 .w3l-header-4 header.nav-fixed {
   padding: 10px 15px;
