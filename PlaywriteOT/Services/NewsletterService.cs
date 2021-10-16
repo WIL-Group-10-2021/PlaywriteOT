@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml;
 using Newtonsoft.Json.Linq;
+using PlaywriteOT.Models;
 using sib_api_v3_sdk.Api;
 using sib_api_v3_sdk.Client;
 using sib_api_v3_sdk.Model;
@@ -20,6 +23,32 @@ namespace PlaywriteOT.Services
             Configuration.Default.ApiKey.Add("api-key", "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");
             apiInstance = new EmailCampaignsApi();
         }
+
+        public GetEmailCampaigns DashboardInfo()
+        {
+            string type = "classic";
+            string status = "sent";
+            string startDate = "2020-08-22T09:43:51.970+05:30";
+            string endDate = "2020-12-24T16:03:51.000+05:30";
+            long? offset = 0;
+
+            try
+            {
+                GetEmailCampaigns result = apiInstance.GetEmailCampaigns(type, status, null, null, 1000, offset);
+                Debug.WriteLine(result.ToJson());
+                Console.WriteLine(result.ToJson());
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                Console.WriteLine(e.Message);
+                return null;
+
+            }
+        }
+
 
         public bool CreateNewCampaign(string headingText, string bodyText, string attachmentUrl)
         {

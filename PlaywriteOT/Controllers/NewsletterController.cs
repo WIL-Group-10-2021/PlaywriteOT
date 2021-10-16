@@ -19,6 +19,9 @@ namespace PlaywriteOT.Controllers
         [HttpGet]
         public IActionResult Dashboard()
         {
+            NewsletterService ns = new NewsletterService();
+            ViewBag.NumEmails = ns.DashboardInfo().Count;       //get summary of newsletters sent
+            
             return View();
         }
 
