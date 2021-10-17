@@ -6,14 +6,26 @@
     <h3 class="title-big">Welcome @ViewBag.UserName</h3>
     <p>What would you like to do today?</p>
 </div>
+
+<div class="text-center py-4">
+    <p>You have been successfully logged in, you now have administrator rights and can manage the website.</p>
+    <p>Below you can find a few of the available activities.</p>
+</div>
 <div id="adminHome" class="d-flex justify-content-center ">
     <div class="form-group text-center justify-content-center">
         <div class="row">
             <label class="pt-2 col" name="password"><b>Register a new Therapist</b></label>
         </div>
-        <div class="row col-6">
+        <div class="row">
             <a asp-area="" asp-controller="User" asp-action="Register"
                class="btn rounded btn-outline-primary btn-lg rounded col w-50">Register</a>
+        </div>
+        <div class="row">
+            <label class="pt-2 col" name="password"><b>Manage Newsletters</b></label>
+        </div>
+        <div class="row">
+            <a asp-area="" asp-controller="Newsletter" asp-action="Dashboard"
+               class="btn rounded btn-outline-primary btn-lg rounded col w-50">Send a Newsletter</a>
         </div>
     </div>
 </div>

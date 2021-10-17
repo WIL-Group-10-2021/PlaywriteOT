@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-// firebase
 using Firebase.Database;
 using Firebase.Database.Query;
 using PlaywriteOT.Models;
-//models
+
 
 namespace PlaywriteOT.Services
 {
@@ -63,8 +62,7 @@ namespace PlaywriteOT.Services
             try
             {
                 var dbUser = (await _firebaseClient.Child("Users").OnceAsync<User>())
-                                                     .Where(u => u.Object.Email == newDBUser.Email)
-                                                     .FirstOrDefault(); //finds user
+                    .FirstOrDefault(u => u.Object.Email == newDBUser.Email); //finds user
                 if (dbUser != null) //checks for duplicate emails
                 {
                     return false;   //if user already exists 
