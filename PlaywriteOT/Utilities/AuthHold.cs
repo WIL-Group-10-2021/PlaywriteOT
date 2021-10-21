@@ -46,7 +46,7 @@ namespace PlaywriteOT.Utilities
         public async Task<bool> LoginUser(string email, string passw)
         {
             dbUser = await fireServ.FindUser(email); //find user from firebase
-            if (dbUser.Email == null) //if user doesnt exists
+            if (dbUser == null) //if user doesnt exists
             {
                 return false;  //if no user
             }
