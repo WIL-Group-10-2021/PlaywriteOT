@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+using PlaywriteOT.Interfaces;
 using PlaywriteOT.Models;
 using PlaywriteOT.Services;
 using PlaywriteOT.Utilities;
@@ -11,6 +14,15 @@ namespace PlaywriteOT.Controllers
 {
     public class NewsletterController : Controller
     {
+
+        private readonly IConfiguration _config;
+        private readonly ITokenService _tokenService;
+
+        public NewsletterController(IConfiguration config, ITokenService tokenService)
+        {
+            _config = config;
+            _tokenService = tokenService;  //injection
+        }
         public IActionResult Index()
         {
             return View();
@@ -19,6 +31,7 @@ namespace PlaywriteOT.Controllers
         [HttpGet]
         public IActionResult Dashboard()
         {
+            if (!IsLoggedIn()) { return RedirectToAction("Login", "User"); }//validates token
             NewsletterService ns = new NewsletterService();
             ViewBag.NumEmails = ns.DashboardInfo().Count;       //get summary of newsletters sent
             
@@ -28,12 +41,14 @@ namespace PlaywriteOT.Controllers
         [HttpGet]
         public IActionResult NewUpload()
         {
+            if (!IsLoggedIn()) { return RedirectToAction("Login", "User"); }//validates token
             return View();
         }
 
         [HttpPost]
         public IActionResult NewUpload(string headingT, string bodyT, string url)
         {
+
             NewsletterService ns = new NewsletterService();
             //call cloudinary Upload 
             //pass through newsletter or get link through upload component
@@ -57,6 +72,7 @@ namespace PlaywriteOT.Controllers
         [HttpGet]
         public IActionResult Subscription()
         {
+            if (!IsLoggedIn()) { return RedirectToAction("Login", "User"); }//validates token
             return View();
         }
 
@@ -67,17 +83,18 @@ namespace PlaywriteOT.Controllers
         }
 
 
-        [HttpGet]
+/*        [HttpGet]
         public ActionResult CreateSubscriber()
         {
             UserVM currentUser = AuthHold.Instance.currentUser;
 
             return View(currentUser.Email); //placeholder
-        }
+        }*/
 
         [HttpGet]
         public IActionResult SentStatus()
         {
+            if (!IsLoggedIn()) { return RedirectToAction("Login", "User"); }//validates token
             return View();
         }
 
@@ -86,6 +103,20 @@ namespace PlaywriteOT.Controllers
         {
             return View(); //placeholder
         }*/
+
+
+
+        private bool IsLoggedIn()
+        {
+            string token = HttpContext.Session.GetString("Token");                                                           // gets JWT from session 
+            if (token == null) { return false; }                                                                                 // no token => back to login
+            if (_tokenService.IsTokenValid(_config["Jwt:Key"].ToString(), _config["Jwt:Issuer"].ToString(), token))
+            {
+                return true;        //valid token
+            }
+            return false;
+            //ViewBag.Message = BuildMessage(token, 50);
+        }
     }
 }
 

@@ -11,14 +11,12 @@ namespace PlaywriteOT.Utilities
 {
     public class AuthHold
     {
-        // empty constructor
+        
         private AuthHold()
         {
 
         }
-
         public static AuthHold instance = null;
-
         public static AuthHold Instance //singleton
         {
             get
@@ -36,6 +34,7 @@ namespace PlaywriteOT.Utilities
         public User dbUser { get; set; }
         public UserVM currentUser { get; set; }
 
+
         /// <summary>
         /// Searches firebase for specified email through FirebaseService, 
         /// and validates specified password if user was found. 
@@ -52,25 +51,24 @@ namespace PlaywriteOT.Utilities
                 return false;  //if no user
             }
 
-            //feeds user salt to HMAC
-            using var hmac = new HMACSHA512(dbUser.USalt);
-            //computes hash of inputted password
-            byte[] enteredPass = hmac.ComputeHash(Encoding.UTF8.GetBytes(passw));
+            using var hmac = new HMACSHA512(dbUser.USalt);                                          //feeds user salt to HMAC
+            byte[] enteredPass = hmac.ComputeHash(Encoding.UTF8.GetBytes(passw));             //computes hash of inputted password
 
             //incase there is a length mismatch in password comparisson
             try
             {
-                //checks entered byte array against stored
-                for (int i = 0; i < dbUser.UPassword.Length; i++)
+                
+                for (int i = 0; i < dbUser.UPassword.Length; i++)                                   //checks entered byte array against stored
                 {
                     if (enteredPass[i] != dbUser.UPassword[i])
                     {
-                        //if incorrect password
-                        return false;
+                        
+                        return false; //if incorrect password
                     }
                 }
 
-                //creates new VM User for local use
+                //UserRepository usR = new UserRepository(dbUser);//creates new VM User for local use
+
                 currentUser = new UserVM
                 {
                     FName = dbUser.FirstName,
@@ -78,7 +76,6 @@ namespace PlaywriteOT.Utilities
                     Email = dbUser.Email,
                     Admin = dbUser.Admin
                 };
-
                 return true;
 
             }
@@ -96,10 +93,8 @@ namespace PlaywriteOT.Utilities
             try //creates new user
             {
                 using var hmac = new HMACSHA512();
-                //creates new hash based on user password
-                byte[] bytesPass = hmac.ComputeHash(Encoding.UTF8.GetBytes(passw));
-                //gets salt
-                byte[] bytesSalt = hmac.Key; 
+                byte[] bytesPass = hmac.ComputeHash(Encoding.UTF8.GetBytes(passw));//creates new hash based on user password
+                byte[] bytesSalt = hmac.Key; //gets salt
 
                 User newDBUser = new User
                 {
@@ -111,8 +106,8 @@ namespace PlaywriteOT.Utilities
                     Admin = true
                 }; //creates firebase user object
 
-                //returns true if successful
-                return await fireServ.CreateUser(newDBUser);
+                
+                return await fireServ.CreateUser(newDBUser);  //returns true if successful
             }
             catch (Exception e)
             {

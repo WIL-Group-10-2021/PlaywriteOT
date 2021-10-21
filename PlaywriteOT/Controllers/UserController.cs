@@ -4,6 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
+using PlaywriteOT.Interfaces;
 using PlaywriteOT.Models;
 using PlaywriteOT.Utilities;
 
@@ -11,41 +14,50 @@ namespace PlaywriteOT.Controllers
 {
     public class UserController : Controller
     {
-        public IActionResult Index()
+        private readonly IConfiguration _config;
+        private readonly ITokenService _tokenService;
+        private string _generatedToken = null;
+
+        public UserController(IConfiguration config, ITokenService tokenService)
         {
-            return View();
+            _config = config;
+            _tokenService = tokenService;  //injection
         }
 
-        // LOGIN
         [HttpGet]
         public IActionResult Login()
         {
-            /*NewsletterService ns = new NewsletterService();
-            if (ns.CreateNewCampaign("","",""))
-            {
-                return View();
-            }*/
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Login(string email, string password)
         {
-            if (await AuthHold.Instance.LoginUser(email, password))
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))    //check for null values
             {
-                HttpContext.Session.SetString("LoggedInUser", email);
-                return RedirectToAction("AdminHome", "Home");
+                ViewBag.Error = "Please enter details";
+                return View();
             }
 
+            if (await AuthHold.Instance.LoginUser(email, password))  //login user
+            {
+                _generatedToken = _tokenService.BuildToken(_config["Jwt:Key"], _config["Jwt:Issuer"].ToString(), AuthHold.Instance.currentUser);
+                
+                if (_generatedToken != null)
+                {
+                    HttpContext.Session.SetString("Token", _generatedToken);   //store token
+                    return RedirectToAction("AdminHome", "Home"); 
+                }
+            }
             ViewBag.Error = "Incorect username and password combination";
             return View();
 
         }
 
-        // REGISTER
         [HttpGet]
         public IActionResult Register()
         {
+            if (!IsLoggedIn()) { return RedirectToAction("Login", "User"); }//validates token
             return View();
         }
 
@@ -83,6 +95,7 @@ namespace PlaywriteOT.Controllers
         [HttpGet]
         public IActionResult Profile()
         {
+            if (!IsLoggedIn()) { return RedirectToAction("Login", "User"); }//validates token
             return View();
         }
 
@@ -109,5 +122,21 @@ namespace PlaywriteOT.Controllers
 
             return View();
         }*/
+
+
+
+        private bool IsLoggedIn()
+        {
+            string token = HttpContext.Session.GetString("Token");                                                           // gets JWT from session 
+            if (token == null) { return false; }                                                                                 // no token => back to login
+            if (_tokenService.IsTokenValid(_config["Jwt:Key"].ToString(), _config["Jwt:Issuer"].ToString(), token))
+            {
+                return true;        //valid token
+            }
+            return false;
+            //ViewBag.Message = BuildMessage(token, 50);
+        }
+
+
     }
 }

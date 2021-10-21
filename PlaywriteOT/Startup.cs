@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,7 +9,13 @@ using PlaywriteOT.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Tokens;
+using PlaywriteOT.Interfaces;
+using PlaywriteOT.Services;
+using PlaywriteOT.Utilities;
 
 namespace PlaywriteOT
 {
@@ -25,9 +32,27 @@ namespace PlaywriteOT
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddMvc();
+            
             services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddSession();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration["Jwt:Issuer"],
+                    ValidAudience = Configuration["Jwt:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes
+                            (Configuration["Jwt:Key"]))
+                };
+            });
+            services.AddMvc();
+            services.AddTransient<ITokenService, TokenService>();
+            services.AddScoped<ITokenService, TokenService>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +75,21 @@ namespace PlaywriteOT
 
             app.UseAuthorization();
 
+            app.UseAuthentication();
+           
+
             app.UseSession();
+
+           app.Use(async (context, next) =>
+            {
+                var token = context.Session.GetString("Token");  //stores JWT as session variable 
+                if (!string.IsNullOrEmpty(token))  //if token in session
+                {
+                    context.Request.Headers.Add("Authorization", "Bearer " + token);
+                }
+                await next();
+            });
+
 
             app.UseEndpoints(endpoints =>
             {
@@ -60,4 +99,5 @@ namespace PlaywriteOT
             });
         }
     }
+
 }
