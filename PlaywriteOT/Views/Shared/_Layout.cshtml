@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Http;
+@using PlaywriteOT.Utilities
 
-@{ var loggedin = Context.Session.GetString("LoggedInUser"); }
+@{ var loggedin = Context.Session.GetString("Token"); }
 
 <!DOCTYPE html>
 
@@ -61,9 +62,10 @@
                         <span class="fa icon-expand fa-bars"></span>
                         <span class="fa icon-close fa-times"></span>
                     </button>
+
                     <!-- MAIN PAGES -->
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav me-auto">
                             <!-- HOME -->
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home </a>
@@ -81,15 +83,38 @@
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                             </li>
                             <!-- NEWSLETTER -->
-                            <li class="nav-item">
-                                @{
-                                    if (loggedin != null)
-                                    {
-                                        <a class="nav-link" asp-area="" asp-controller="Newsletter" asp-action="Dashboard">Newsletters</a>
-                                    }
+                            @{
+                                if (!string.IsNullOrEmpty(loggedin))
+                                {
+                                    <li class="nav-item">
+                                        @{
+                                            if (loggedin != null)
+                                            {
+                                                <a class="nav-link" asp-area="" asp-controller="Newsletter" asp-action="Dashboard">Newsletters</a>
+                                            }
+                                        }
+                                    </li>
                                 }
-                            </li>
+                            }
                         </ul>
+
+                        <ul class="navbar-nav me-auto">
+                            @{
+                                if (!string.IsNullOrEmpty(loggedin))
+                                {
+                                    var uName = AuthHold.Instance.dbUser.FirstName;
+                                    <li class="nav-item dropdown float-right">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-haspopup="true" aria-expanded="false">Welcome, @uName</a>
+                                        <div class="dropdown-menu">
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" asp-controller="User" asp-action="Logout">Logout</a>
+                                        </div>
+                                    </li>
+                                }
+                            }
+                        </ul>
+
                     </div>
                 </nav>
             </div>

@@ -104,6 +104,17 @@ namespace PlaywriteOT.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.SetString("Token","");
+            AuthHold.Instance.currentUser = null;
+            AuthHold.Instance.dbUser = null;
+            return View();
+        }
+
+
+
         /*[HttpPost]
         public async Task<IActionResult> Profile(string fname, string lname, string emailAddress, string psw, string pswConfirm)
         {
@@ -116,7 +127,7 @@ namespace PlaywriteOT.Controllers
                 userVM.FName = fname;
                 userVM.LName = lname;
                 userVM.Email = emailAddress;
-                
+
                 await AuthHold.Instance.UpdateUserDetails(userVM);
 
             }

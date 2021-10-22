@@ -54,7 +54,7 @@ namespace PlaywriteOT.Utilities
             using var hmac = new HMACSHA512(dbUser.USalt);                                          //feeds user salt to HMAC
             byte[] enteredPass = hmac.ComputeHash(Encoding.UTF8.GetBytes(passw));             //computes hash of inputted password
 
-            //incase there is a length mismatch in password comparisson
+            //incase there is a length mismatch in password comparison
             try
             {
                 
