@@ -19,7 +19,7 @@ Therefore, to deploy the project, run the following commands in the project dire
 ### 1. Create/Build the Dockerfile
 Ensure that docker has been set up locally and is up to date, then build the image.
 ```bash
-   docker build -t playwriteot:<Version> .   
+  docker build -t playwriteot:<Version> .   
 ```
 
 
