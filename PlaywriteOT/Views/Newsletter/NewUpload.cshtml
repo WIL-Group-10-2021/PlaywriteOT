@@ -18,14 +18,15 @@
             <input type="text" class="rounded" placeholder="Good day to all my lovely subscribers..." name="bodyT" required>
         </div>
 
-        <a id="upload_widget" class="cloudinary-button justify-content-center text-center rounded btn-outline-primary btn-lg">Upload files</a>
-        <input id="imageURL" type="text" name="url" hidden />
-
+        <div class="form-group text-center justify-content-center">
+            <input id="upload_widget" class="btn rounded btn-outline-primary btn-lg rounded" value="Upload Files"/>
+            <input id="imageURL" type="text" name="url" hidden />
+        </div>
 
         <div class="p-1 text-danger">@ViewBag.error</div>
 
         <div class="form-group text-center justify-content-center">
-            <input type="submit" value="Send Newsletter" class="btn rounded btn-outline-primary btn-lg rounded col w-50" />
+            <input type="submit" value="Send Newsletter" class="btn rounded btn-outline-primary btn-lg rounded" />
         </div>
 
     </form>
@@ -37,7 +38,7 @@
 
 <!--  Cloudinary widget creation and parameter specification  -->
 <script type="text/javascript">
-var myWidget = cloudinary.createUploadWidget({
+    var myWidget = cloudinary.createUploadWidget({
         cloudName: 'playwriteot',
         uploadPreset: 'v3u8fprx',
         sources: ["local", "url"],
@@ -46,7 +47,7 @@ var myWidget = cloudinary.createUploadWidget({
         (error, result) => {
 
             if (!error && result && result.event === "success") {
-                document.getElementById("imageURL").setAttribute("value",result.info.url); //get the URL of the pdf to pass back to the view
+                document.getElementById("imageURL").setAttribute("value", result.info.url); //get the URL of the pdf to pass back to the view
                 document.getElementById("upload_widget").setAttribute("disable", "true"); //disables upload button after file upload
             }
         }
