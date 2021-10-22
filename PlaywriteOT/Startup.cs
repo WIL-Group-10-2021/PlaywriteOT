@@ -80,7 +80,7 @@ namespace PlaywriteOT
 
             app.UseSession();
 
-           app.Use(async (context, next) =>
+/*           app.Use(async (context, next) =>
             {
                 var token = context.Session.GetString("Token");  //stores JWT as session variable 
                 if (!string.IsNullOrEmpty(token))  //if token in session
@@ -88,7 +88,7 @@ namespace PlaywriteOT
                     context.Request.Headers.Add("Authorization", "Bearer " + token);
                 }
                 await next();
-            });
+            });*/
 
 
             app.UseEndpoints(endpoints =>
