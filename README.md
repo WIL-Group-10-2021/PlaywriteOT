@@ -17,16 +17,26 @@ Docker is used to run the application on Heroku's container registry.
 Therefore, to deploy the project, run the following commands in the project directory:
 
 ### 1. Create/Build the Dockerfile
+Ensure that docker has been set up locally and is up to date, then build the image.
 ```bash
-  docker build -t playwriteot:<Version> .   
+   docker build -t playwriteot:<Version> .   
 ```
 
-### 2. Push the image to Heroku
+
+### 2. Configure HerokuCLI
+Ensure the [HerokuCLI](https://devcenter.heroku.com/articles/heroku-cli) has been installed and you have signed into the container registry.
+
+```bash
+  heroku login 
+  heroku container:login
+```
+
+### 3. Push the image to Heroku
 ```bash
   heroku container:push web -a playwrite-ot   
 ```
    
-### 3. Release/Deploy the image from Heroku 
+### 4. Release/Deploy the image from Heroku 
 ```bash
  heroku container:release web -a playwrite-ot
 ```
