@@ -60,10 +60,12 @@ namespace PlaywriteOT.Controllers
                     ViewBag.Error = "Makes sure all fields are filled in and you have uploaded a newsletter";
                     return View();
                 }
+                LoggingService.WriteLog(new Log(this.GetType().FullName, "Campaign sent by" + AuthHold.Instance.currentUser.Email));
                 return RedirectToAction($"SentStatus");
             }
             catch (Exception)
             {
+                LoggingService.WriteLog(new Log(this.GetType().FullName, "Campaign failed send by:" + AuthHold.Instance.currentUser.Email));
                 ViewBag.Error = "Newsletters failed to send";
                 return View();
             }
@@ -105,7 +107,10 @@ namespace PlaywriteOT.Controllers
         }*/
 
 
-
+        /// <summary>
+        /// Checks that that user is logged in and has a valid token
+        /// </summary>
+        /// <returns>True if valid token</returns>
         private bool IsLoggedIn()
         {
             string token = HttpContext.Session.GetString("Token");                                                           // gets JWT from session 

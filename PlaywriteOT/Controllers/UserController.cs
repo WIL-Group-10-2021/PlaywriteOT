@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using PlaywriteOT.Interfaces;
 using PlaywriteOT.Models;
+using PlaywriteOT.Services;
 using PlaywriteOT.Utilities;
 
 namespace PlaywriteOT.Controllers
@@ -45,10 +46,12 @@ namespace PlaywriteOT.Controllers
                 
                 if (_generatedToken != null)
                 {
-                    HttpContext.Session.SetString("Token", _generatedToken);   //store token
-                    return RedirectToAction("AdminHome", "Home"); 
+                    HttpContext.Session.SetString("Token", _generatedToken);                                                    //store token
+                    LoggingService.WriteLog(new Log(this.GetType().FullName, "Login success: " + email));         //new log for login success
+                    return RedirectToAction("AdminHome", "Home");                                                   //successfully logged in
                 }
             }
+            LoggingService.WriteLog(new Log(this.GetType().FullName, "Login failed: " + email));                  //new log for login fail
             ViewBag.Error = "Incorect username and password combination";
             return View();
 
@@ -57,7 +60,7 @@ namespace PlaywriteOT.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            if (!IsLoggedIn()) { return RedirectToAction("Login", "User"); }//validates token
+            if (!IsLoggedIn()) { return RedirectToAction("Login", "User"); }                                        //validates token
             return View();
         }
 
@@ -77,10 +80,12 @@ namespace PlaywriteOT.Controllers
                 //if registration successsfull
                 if (await AuthHold.Instance.RegisterUser(userVM, password))
                 {
+                    LoggingService.WriteLog(new Log(this.GetType().FullName, "Registration: " + email)); 
                     return RedirectToAction("Login");
                 }
                 else
                 {
+                    LoggingService.WriteLog(new Log(this.GetType().FullName, "Register - Email already exists: " + email)); 
                     ViewBag.Error = "Email already exists";
                     return View();
                 }
@@ -124,7 +129,10 @@ namespace PlaywriteOT.Controllers
         }*/
 
 
-
+        /// <summary>
+        /// Checks that that user is logged in and has a valid token
+        /// </summary>
+        /// <returns>True if valid token</returns>
         private bool IsLoggedIn()
         {
             string token = HttpContext.Session.GetString("Token");                                                           // gets JWT from session 

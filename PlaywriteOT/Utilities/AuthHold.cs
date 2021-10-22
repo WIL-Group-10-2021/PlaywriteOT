@@ -67,8 +67,6 @@ namespace PlaywriteOT.Utilities
                     }
                 }
 
-                //UserRepository usR = new UserRepository(dbUser);//creates new VM User for local use
-
                 currentUser = new UserVM
                 {
                     FName = dbUser.FirstName,
@@ -89,7 +87,6 @@ namespace PlaywriteOT.Utilities
         //registers new user
         public async Task<bool> RegisterUser(UserVM newUser, string passw)
         {
-
             try //creates new user
             {
                 using var hmac = new HMACSHA512();
@@ -106,7 +103,6 @@ namespace PlaywriteOT.Utilities
                     Admin = true
                 }; //creates firebase user object
 
-                
                 return await fireServ.CreateUser(newDBUser);  //returns true if successful
             }
             catch (Exception e)

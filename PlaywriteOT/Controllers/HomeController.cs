@@ -59,8 +59,6 @@ namespace PlaywriteOT.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-
         private string BuildMessage(string stringToSplit, int chunkSize)
         {
             var data = Enumerable.Range(0, stringToSplit.Length / chunkSize).Select(i => stringToSplit.Substring(i * chunkSize, chunkSize));
@@ -71,7 +69,10 @@ namespace PlaywriteOT.Controllers
             }
             return result;
         }
-
+        /// <summary>
+        /// Checks that that user is logged in and has a valid token
+        /// </summary>
+        /// <returns>True if valid token</returns>
         private bool IsLoggedIn()
         {
             string token = HttpContext.Session.GetString("Token");                                                           // gets JWT from session 
