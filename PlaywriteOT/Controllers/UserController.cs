@@ -67,8 +67,8 @@ namespace PlaywriteOT.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(string firstName, string lastName, string email, string password, string confirmPassword)
         {
-            //user entered the matching passwords
-            if (password.Equals(confirmPassword)) 
+            
+            if (password.Equals(confirmPassword))                                                                               //user entered the matching passwords
             {
                 UserVM userVM = new UserVM()
                 {
@@ -77,8 +77,8 @@ namespace PlaywriteOT.Controllers
                     Email = email
                 };
 
-                //if registration successsfull
-                if (await AuthHold.Instance.RegisterUser(userVM, password))
+                
+                if (await AuthHold.Instance.RegisterUser(userVM, password))                                                     //if registration successsfull
                 {
                     LoggingService.WriteLog(new Log(this.GetType().FullName, "Registration: " + email)); 
                     return RedirectToAction("Login");
@@ -146,8 +146,8 @@ namespace PlaywriteOT.Controllers
         /// <returns>True if valid token</returns>
         private bool IsLoggedIn()
         {
-            string token = HttpContext.Session.GetString("Token");                                                           // gets JWT from session 
-            if (token == null) { return false; }                                                                                 // no token => back to login
+            string token = HttpContext.Session.GetString("Token");                                                          //gets JWT from session 
+            if (token == null) { return false; }                                                                                //no token => back to login
             if (_tokenService.IsTokenValid(_config["Jwt:Key"].ToString(), _config["Jwt:Issuer"].ToString(), token))
             {
                 return true;        //valid token

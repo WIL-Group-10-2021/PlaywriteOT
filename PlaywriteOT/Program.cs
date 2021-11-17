@@ -10,29 +10,29 @@ namespace PlaywriteOT
     {
         public static void Main(string[] args)
         {
-            //CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run();
 
 
-            var host = CreateWebHostBuilder(args).
+ /*           var host = CreateWebHostBuilder(args).
                 UseKestrel().
                 UseUrls("http://0.0.0.0:" + Environment.GetEnvironmentVariable("PORT")).
                 Build();
 
-            host.Run();
+            host.Run();*/
 
 
 
 
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) => WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        /*    public static IWebHostBuilder CreateWebHostBuilder(string[] args) => WebHost.CreateDefaultBuilder(args)
+                    .UseStartup<Startup>();*/
 
-        /* public static IHostBuilder CreateHostBuilder(string[] args) =>
-             Host.CreateDefaultBuilder(args)
-                 .ConfigureWebHostDefaults(webBuilder =>
-                 {
-                     webBuilder.UseStartup<Startup>();
-                 });*/
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }

@@ -8,10 +8,12 @@
             <li class="nav-item">
                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
             </li>
-            <li class="active">/ Services</li>
+            |
+            <li class="nav-link"> Services</li>
         </ul>
     </div>
 </section>
+
 
 <div class="w3l-servicesblock1" id="why">
     <section id="grids5-block" class="py-5">
@@ -70,7 +72,6 @@
     </section>
 </div>
 <!--  //services section -->
-
 <!-- services page - TIPS -->
 <section class="w3l-services" id="core">
     <div class="midd-w3 py-2 px-3">
@@ -107,7 +108,7 @@
                                 <div class="feature-images">
                                     <span class="fa fa-desktop" aria-hidden="true"></span>
                                 </div>
-                                <h5><a asp-area="" asp-controller="Navigation" asp-action="TipsForTherapists">Tips for Therapists</a></h5>
+                                <h5><a asp-area="" asp-controller="Resources" asp-action="TipsForTherapists">Tips for Therapists</a></h5>
                             </div>
                         </div>
                         <div class="col-md-6 mt-lg-0 mt-4">
@@ -115,7 +116,7 @@
                                 <div class="feature-images">
                                     <span class="fa fa-sign-language" aria-hidden="true"></span>
                                 </div>
-                                <h5><a asp-area="" asp-controller="Navigation" asp-action="TipsForTeachers">Tips for Teachers</a></h5>
+                                <h5><a asp-area="" asp-controller="Resources" asp-action="TipsForTeachers">Tips for Teachers</a></h5>
                             </div>
                         </div>
                         <div class="col-md-6 mt-4">
@@ -123,19 +124,9 @@
                                 <div class="feature-images">
                                     <span class="fa fa-ravelry" aria-hidden="true"></span>
                                 </div>
-                                <h5><a asp-area="" asp-controller="Navigation" asp-action="TipsForParents">Tips for Parents</a></h5>
+                                <h5><a asp-area="" asp-controller="Resources" asp-action="TipsForParents">Tips for Parents</a></h5>
                             </div>
                         </div>
-                        <!--
-                        <div class="col-md-6 mt-4">
-                            <div class="features4-grid">
-                                <div class="feature-images">
-                                    <span class="fa fa-bullhorn" aria-hidden="true"></span>
-                                </div>
-                                <h5><a href="#about">Digital Product Development</a></h5>
-                            </div>
-                        </div>
-                        -->
                     </div>
                 </div>
             </div>
@@ -143,104 +134,3 @@
     </div>
 </section>
 <!-- //services page - TIPS -->
-
-<!-- services - diseases -->
-<section class="w3l-bottom-grids-6 py-5" id="allservices">
-    <div class="container py-lg-5 py-md-4 py-2">
-        <h6 class="title-small text-center">Our Services </h6>
-        <h3 class="title-big mb-md-5 mb-4 text-center">
-            Playwrite Occupational Therapy .
-        </h3>
-        <div class="grids-area-hny main-cont-wthree-fea row">
-            <div class="col-lg-3 col-md-6 grids-feature mt-4">
-                <div class="area-box">
-                    <span class="fa fa-puzzle-piece"></span>
-                    <h4>
-                        <a asp-area="" asp-controller="Navigation" asp-action="AutismSpectrumDisorder" class="title-head">
-                            Autism Spectrum Disorder (ASD)
-                        </a>
-                    </h4>
-                    <p>
-                        A complex developmental condition related to brain development that impacts how a person perceives and socializes with others,
-                        causing problems in social interaction and communication.
-                    </p>
-
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 grids-feature mt-4">
-                <div class="area-box">
-                    <span class="fa fa-eye"></span>
-                    <h4>
-                    <a asp-area="" asp-controller="Navigation" asp-action="SensoryProcessingDisorder" class="title-head">
-                        Sensory Proccessing Disorder(SPD)
-                        </a>
-                    </h4>
-                    <p>
-                        A condition in which the brain has trouble receiving and responding to information that comes in through the senses.
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 grids-feature mt-4">
-                <div class="area-box">
-                    <span class="fa fa-wheelchair"></span>
-                    <h4>
-                        <a asp-area="" asp-controller="Navigation" asp-action="CerebralPalsy" class="title-head">
-                            Cerebral Palsy
-                        </a>
-                    </h4>
-                    <p>
-                        A group of disorders that affect a person's ability to move and maintain balance and posture. CP is the most common motor disability in childhood.
-                    </p>
-
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 grids-feature mt-4">
-                <div class="area-box">
-                    <span class="fa fa-hand-paper-o"></span>
-                    <h4>
-                        <a asp-area="" asp-controller="Navigation" asp-action="DownSyndrome" class="title-head">
-                            Down Syndrome
-                        </a>
-                    </h4>
-                    <p>
-                        A condition in which a person has an extra chromosome and can affect a person's cognitive ability and physical growth, can
-                        cause mild to moderate developmental issues, and higher risk of some health problems
-                    </p>
-
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 grids-feature mt-4">
-                <div class="area-box">
-                    <span class="fa fa-spinner"></span>
-                    <h4>
-                        <a asp-area="" asp-controller="Navigation" asp-action="DevelopmentalDelay" class="title-head">
-                            Developmental Delay
-                        </a>
-                    </h4>
-                    <p>
-                        Refers to a child who has not gained the developmental skills expected of him or her, compared to others of the same age.
-                        Delays may occur in the areas of motor function, speech and language, cognitive, play, and social skills.
-                    </p>
-
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 grids-feature mt-4">
-                <div class="area-box">
-                    <span class="fa fa-book"></span>
-                    <h4>
-                        <a asp-area="" asp-controller="Navigation" asp-action="LearningDifficulties" class="title-head">
-                            Learning Difficulties
-                        </a>
-                    </h4>
-                    <p>
-                        Indicate an individual's need for alternative learning methods, they are not indicative 
-                        of intelligence level and are not the same as intellectual difficulties—learning challenges that result from sensory handicaps;
-                        developmental delays; or cultural, economic, or environmental disadvantages.
-                    </p>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- //services - diseases -->

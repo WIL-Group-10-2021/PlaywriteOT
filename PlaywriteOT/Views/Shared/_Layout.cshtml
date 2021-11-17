@@ -39,87 +39,89 @@
             color: #c0ccda;
         }
     </style>
-
     <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
-
 </head>
+
 
 <body>
     <!-- header -->
-    <header id="site-header" class="fixed-top">
-        <section class="w3l-header-4">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <!--WEBSITE NAME -->
-                    <h1>
-                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                            PlaywriteOT
-                        </a>
-                    </h1>
-                    <!-- dropdown menu icon -->
-                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
-                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="fa icon-expand fa-bars"></span>
-                        <span class="fa icon-close fa-times"></span>
-                    </button>
+<header id="site-header" class="fixed-top">
+    <section class="w3l-header-4">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <!--WEBSITE NAME -->
+                <h1>
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        PlaywriteOT
+                    </a>
+                </h1>
+                <!-- dropdown menu icon -->
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="fa icon-expand fa-bars"></span>
+                    <span class="fa icon-close fa-times"></span>
+                </button>
 
-                    <!-- MAIN PAGES -->
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav me-auto">
-                            <!-- HOME -->
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home </a>
-                            </li>
-                            <!-- ABOUT -->
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
-                            </li>
-                            <!-- SERVICES -->
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Services">Services</a>
-                            </li>
-                            <!-- CONTACT -->
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
-                            </li>
-                            <!-- NEWSLETTER -->
-                            @{
-                                if (!string.IsNullOrEmpty(loggedin))
-                                {
-                                    <li class="nav-item">
-                                        @{
-                                            if (loggedin != null)
-                                            {
-                                                <a class="nav-link" asp-area="" asp-controller="Newsletter" asp-action="Dashboard">Newsletters</a>
-                                            }
+                <!-- MAIN PAGES -->
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav me-auto">
+                        <!-- HOME -->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home </a>
+                        </li>
+                        <!-- ABOUT -->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                        </li>
+                        <!-- SERVICES -->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Services">Services</a>
+                        </li>
+                        <!-- Resource -->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Resources" asp-action="Index">Resources</a>
+                        </li>
+                        <!-- CONTACT -->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                        </li>
+                        <!-- NEWSLETTER -->
+                        @{
+                            if (!string.IsNullOrEmpty(loggedin))
+                            {
+                                <li class="nav-item">
+                                    @{
+                                        if (loggedin != null)
+                                        {
+                                            <a class="nav-link" asp-area="" asp-controller="Newsletter" asp-action="Dashboard">Newsletters</a>
                                         }
-                                    </li>
-                                }
+                                    }
+                                </li>
                             }
-                        </ul>
-
-                        <ul class="navbar-nav me-auto">
-                            @{
-                                if (!string.IsNullOrEmpty(loggedin))
-                                {
-                                    var uName = AuthHold.Instance.dbUser.FirstName;
-                                    <li class="nav-item dropdown float-right">
-                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                           aria-haspopup="true" aria-expanded="false">Welcome, @uName</a>
-                                        <div class="dropdown-menu">
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" asp-controller="User" asp-action="Logout">Logout</a>
-                                        </div>
-                                    </li>
-                                }
+                        }
+                    </ul>
+                    <ul class="navbar-nav me-auto">
+                        @{
+                            if (!string.IsNullOrEmpty(loggedin))
+                            {
+                                var uName = AuthHold.Instance.dbUser.FirstName;
+                                <li class="nav-item dropdown float-right">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true" aria-expanded="false">Welcome, @uName</a>
+                                    <div class="dropdown-menu">
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" asp-controller="User" asp-action="Logout">Logout</a>
+                                    </div>
+                                </li>
                             }
-                        </ul>
+                        }
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+</header>
 
-                    </div>
-                </nav>
-            </div>
-        </section>
-    </header>
     <!-- //header -->
     <!-- body -->
     <div class="container">
@@ -148,11 +150,10 @@
                         </p>
                         <div class="main-social-footer-29 mt-4">
                             <a href="https://www.facebook.com/playwriteOT/" target="_blank" class="facebook"><span class="fa fa-facebook"></span></a>
-
+                            <a href="https://www.instagram.com/playwriteot/"><span class="fa fa-instagram" aria-hidden="true"></span></a>
                             <!-- // other social media pages (if available)
-                                <a href="#twitter"><span class="fa fa-twitter-square" aria-hidden="true"></span></a>
-                                <a href="#instagram"><span class="fa fa-instagram" aria-hidden="true"></span></a>
-                                <a href="#linkedin"><span class="fa fa-linkedin-square" aria-hidden="true"></span></a>
+                            <a href="#twitter"><span class="fa fa-twitter-square" aria-hidden="true"></span></a>
+                            <a href="#linkedin"><span class="fa fa-linkedin-square" aria-hidden="true"></span></a>
                             -->
                         </div>
                     </div>

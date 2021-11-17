@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace PlaywriteOT.Controllers
 {
-    public class NavigationController : Controller
+    public class ResourcesController : Controller
     {
+        public IActionResult Index()
+        {
+            return View();
+        }
         public IActionResult AutismSpectrumDisorder()
         {
             return View();

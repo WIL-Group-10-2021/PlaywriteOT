@@ -85,14 +85,14 @@ namespace PlaywriteOT.Controllers
         }
 
 
-/*        [HttpGet]
+/*      [HttpGet]
         public ActionResult CreateSubscriber()
         {
             UserVM currentUser = AuthHold.Instance.currentUser;
 
             return View(currentUser.Email); //placeholder
         }*/
-
+        
         [HttpGet]
         public IActionResult SentStatus()
         {
