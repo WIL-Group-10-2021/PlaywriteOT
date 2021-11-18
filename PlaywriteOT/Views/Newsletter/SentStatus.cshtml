@@ -1,1 +1,40 @@
 ﻿
+@{ ViewData["Title"] = "Sent Status"; }
+<!-- Newsletter Sent Status-->
+
+
+
+
+
+<div class="text-center py-4">
+    <h3 class="title-big">Newsletter successfully sent!</h3>
+</div>
+
+<br />
+<br />
+
+<div class="text-center py-4">
+    <p>Congratualtions on a successful newsletter campaign!</p>
+</div>
+
+<br />
+<br />
+
+<div id="sentStatus" class="d-flex justify-content-center ">
+    <div class="form-group text-center justify-content-center">
+        <div class="row">
+            <a asp-area="" asp-controller="Home" asp-action="Index"
+               class="btn rounded btn-outline-primary btn-lg rounded col w-50">Home</a>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <a asp-area="" asp-controller="Newsletter" asp-action="Dashboard"
+               class="btn rounded btn-outline-primary btn-lg rounded col w-50">Newsletter Dashboard</a>
+        </div>
+
+        <br />
+        <br />
+    </div>
+</div>

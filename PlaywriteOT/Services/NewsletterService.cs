@@ -20,7 +20,11 @@ namespace PlaywriteOT.Services
 
         public NewsletterService()
         {
-            Configuration.Default.ApiKey.Add("api-key", "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");
+            if (!Configuration.Default.ApiKey.ContainsKey("api-key"))
+            { 
+                Configuration.Default.ApiKey.Add("api-key", "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");
+            }
+           
             apiInstance = new EmailCampaignsApi();
         }
 
@@ -49,6 +53,44 @@ namespace PlaywriteOT.Services
             }
         }
 
+        public bool CreateSmtpEmail(string name, string email, string phonNum, string mssg)
+        {
+            var apiInstance = new TransactionalEmailsApi();
+            SendSmtpEmailSender Email = new SendSmtpEmailSender("PlaywriteOT", "playwriteot0@gmail.com");                                                   //Sender Details
+            
+            SendSmtpEmailTo smtpEmailTo = new SendSmtpEmailTo(email ,name);                           //Receiver Details
+            List<SendSmtpEmailTo> To = new List<SendSmtpEmailTo>();
+            To.Add(smtpEmailTo);
+
+            SendSmtpEmailCc CcData = new SendSmtpEmailCc(email, name);
+            List<SendSmtpEmailCc> Cc = new List<SendSmtpEmailCc>();
+            Cc.Add(CcData);
+
+            SendSmtpEmailReplyTo ReplyTo = new SendSmtpEmailReplyTo("playwriteot0@gmail.com", "Amy");
+
+            long? TemplateId = 15;
+    
+            JObject Params = new()
+            {
+                { "name", name },
+                { "message", mssg },
+                { "pN", phonNum}
+            };
+
+            try
+            {
+                var sendSmtpEmail = new SendSmtpEmail(Email, To, null, Cc, null, null, null, ReplyTo, null, null
+                    ,TemplateId, Params, null, null);
+                CreateSmtpEmail result = apiInstance.SendTransacEmail(sendSmtpEmail);
+                var reu = result.ToJson();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
 
         public bool CreateNewCampaign(string headingText, string bodyText, string attachmentUrl)
         {
@@ -57,11 +99,11 @@ namespace PlaywriteOT.Services
             // attachmentUrl = "https://res.cloudinary.com/playwriteot/image/upload/v1630614158/TestPDF_oxpqwt.pdf";
 
             if (string.IsNullOrEmpty(headingText))
-                throw new ArgumentException("Value cannot be null or empty.", nameof(headingText));
+                return false;
             if (string.IsNullOrEmpty(bodyText))
-                throw new ArgumentException("Value cannot be null or empty.", nameof(bodyText));
+                return false;
             if (string.IsNullOrEmpty(attachmentUrl))
-                throw new ArgumentException("Value cannot be null or empty.", nameof(attachmentUrl));
+                return false;
 
             List<long?> exclusionListIds = new List<long?>();
             exclusionListIds.Add(3);

@@ -13,3 +13,12 @@ INFO - 2021/10/23 00:52:36 - PlaywriteOT.Controllers.UserController - Login succ
 INFO - 2021/10/23 00:54:29 - PlaywriteOT.Controllers.UserController - Login success: pop@gmail.com
 INFO - 2021/10/23 00:55:43 - PlaywriteOT.Controllers.UserController - Login success: pop@gmail.com
 INFO - 2021/11/17 01:34:59 - PlaywriteOT.Controllers.UserController - Login success: pop@gmail.com
+INFO - 2021/11/18 15:18:28 - PlaywriteOT.Controllers.UserController - Login success: pop@gmail.com
+INFO - 2021/11/18 15:20:17 - PlaywriteOT.Controllers.UserController - Login success: pop@gmail.com
+INFO - 2021/11/18 15:22:26 - PlaywriteOT.Controllers.UserController - Login success: pop@gmail.com
+INFO - 2021/11/18 15:23:43 - PlaywriteOT.Controllers.UserController - Login success: pop@gmail.com
+INFO - 2021/11/18 15:24:53 - PlaywriteOT.Controllers.UserController - Login success: pop@gmail.com
+INFO - 2021/11/18 15:26:42 - PlaywriteOT.Controllers.UserController - Login success: pop@gmail.com
+INFO - 2021/11/18 15:28:21 - PlaywriteOT.Controllers.UserController - Login success: pop@gmail.com
+INFO - 2021/11/18 15:29:38 - PlaywriteOT.Controllers.NewsletterController - Campaign sent bypop@gmail.com
+INFO - 2021/11/18 20:44:06 - PlaywriteOT.Controllers.UserController - Login success: pop@gmail.com

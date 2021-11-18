@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using PlaywriteOT.Interfaces;
 using PlaywriteOT.Models;
+using PlaywriteOT.Services;
 
 namespace PlaywriteOT.Controllers
 {
@@ -45,10 +46,40 @@ namespace PlaywriteOT.Controllers
             if (!IsLoggedIn()) { return RedirectToAction("Login", "User"); }//validates token
             return View();
         }
+
+        [HttpGet]
         public IActionResult Contact()
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Contact(string name, string emal, string ph, string mess)
+        {
+            NewsletterService ns = new NewsletterService();
+            ns.CreateSmtpEmail(name, emal, ph, mess);
+            try
+            {
+                if (!ns.CreateSmtpEmail(name, emal, ph, mess))
+                {
+                    ViewBag.Error = "Makes sure all fields are filled in";
+                    return View();
+                }
+                return RedirectToAction($"ContactStatus");
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = "Contact Request failed to send, please try again later";
+                return View();
+            }
+        }
+
+
+        [HttpGet]
+        public IActionResult ContactStatus()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

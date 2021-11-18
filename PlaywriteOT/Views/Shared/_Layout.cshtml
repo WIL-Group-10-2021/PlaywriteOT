@@ -174,7 +174,16 @@
                             <li><a href="#marketplace">Digital Services</a></li>
                             <li><a href="#experts">Assistance</a></li>
                             <li><a href="#platform">Milestones</a></li>
-                            <li><a asp-controller="User" asp-action="Login">Login</a></li>
+                            @{
+                                if (!string.IsNullOrEmpty(loggedin))
+                                {
+                                    <li><a asp-controller="User" asp-action="Logout">Logout</a></li>
+                                }
+                                else
+                                {
+                                    <li><a asp-controller="User" asp-action="Login">Login</a></li>
+                                }
+                            }
                         </ul>
 
                     </div>

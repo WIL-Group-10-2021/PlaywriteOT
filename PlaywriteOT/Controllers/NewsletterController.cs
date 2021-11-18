@@ -50,8 +50,6 @@ namespace PlaywriteOT.Controllers
         {
 
             NewsletterService ns = new NewsletterService();
-            //call cloudinary Upload 
-            //pass through newsletter or get link through upload component
 
             try
             {
@@ -72,9 +70,8 @@ namespace PlaywriteOT.Controllers
         }
 
         [HttpGet]
-        public IActionResult Subscription()
+        public IActionResult Subscription() //SendInBlue has an integrated page
         {
-            if (!IsLoggedIn()) { return RedirectToAction("Login", "User"); }//validates token
             return View();
         }
 
@@ -99,12 +96,6 @@ namespace PlaywriteOT.Controllers
             if (!IsLoggedIn()) { return RedirectToAction("Login", "User"); }//validates token
             return View();
         }
-
-        /*[HttpPost]
-        public ActionResult CreateSubscriber()
-        {
-            return View(); //placeholder
-        }*/
 
 
         /// <summary>
